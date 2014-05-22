@@ -53,7 +53,7 @@ try {
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 	
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/" + dbusername + dbpassword;
+    String connURL="jdbc:mysql://" + host + ":" + port + "/" + "user:" + dbusername + "password:" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
     Statement stmt=conn.createStatement();
    
