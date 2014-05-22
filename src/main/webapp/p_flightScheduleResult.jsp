@@ -62,20 +62,10 @@ width:650px;
 			
 			</div>
 <% try {
-<<<<<<< HEAD
+
   Class.forName("com.mysql.jdbc.Driver");
     String connURL=System.getenv("OPENSHIFT_MYSQL_DB_URL");
     Connection conn=DriverManager.getConnection(connURL);
-=======
-    // Step1: Load JDBC Driver
-    Class.forName("com.mysql.jdbc.Driver");
-    // Step 2: Define Connection URL
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
-    // Step 3: Establish connection to URL
-    Connection conn=DriverManager.getConnection(connURL);
-    // Step 4: Create Statement object
-    //Statement stmt=conn.createStatement();
->>>>>>> 3c652a0cd2d5c6c99585954ed77768ddcf487739
 
     String Dairport=request.getParameter("destination");
 	String Oairport=request.getParameter("origin");

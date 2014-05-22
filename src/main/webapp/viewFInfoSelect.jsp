@@ -59,14 +59,10 @@ width:650px;
 				<div id="datatable">
 
 <%try {
-
     Class.forName("com.mysql.jdbc.Driver");
     String connURL=System.getenv("OPENSHIFT_MYSQL_DB_URL");
     Connection conn=DriverManager.getConnection(connURL);
-
     Statement stmt=conn.createStatement();
-
-
 	String year=request.getParameter("viewYYYY");
 	String month=request.getParameter("viewMM");
 	
