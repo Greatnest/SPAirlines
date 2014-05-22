@@ -51,8 +51,9 @@ try {
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-   Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://%s:%s/spairlines", host, port, dbusername, dbpassword );
+	
+    Class.forName("com.mysql.jdbc.Driver");
+    String connURL="jdbc:mysql://" + host + ":" + port + "/" + dbusername + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
     Statement stmt=conn.createStatement();
    
