@@ -49,7 +49,7 @@
 try {
 
    Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
+    String connURL="jdbc:mysql://'System.getenv'(OPENSHIFT_MYSQL_DB_HOST):'System.getenv'(OPENSHIFT_MYSQL_DB_PORT)/spairlines", System.getenv("OPENSHIFT_MYSQL_DB_USERNAME", System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD=");
     Connection conn=DriverManager.getConnection(connURL);
     Statement stmt=conn.createStatement();
    
