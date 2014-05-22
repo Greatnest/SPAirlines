@@ -26,9 +26,15 @@
 	
 	
 try {
+<<<<<<< HEAD
 Class.forName("com.mysql.jdbc.Driver");
     String connURL=System.getenv("OPENSHIFT_MYSQL_DB_URL");
     Connection conn=DriverManager.getConnection(connURL);
+=======
+	    Class.forName("com.mysql.jdbc.Driver");
+	    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+	     Connection conn=DriverManager.getConnection(connURL); 
+>>>>>>> 3c652a0cd2d5c6c99585954ed77768ddcf487739
 		String sqlStr="Insert into booking(flightScheduleID, passengerClass, trip, fullName, NRIC, address, contactNo, email) Values(?,?,?,?,?,?,?,?)";
 
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
