@@ -86,8 +86,8 @@ try {
    	resetlink.append(userID);
    	String linkreset=resetlink.toString();
    	
-	   final String username = "lindonng@hotmail.com";
-	   final String password = "girlboy123456";
+	   final String username = "ngquiet@gmail.com";
+	   final String password = "areyoumad12";
 	   Properties props = new Properties();
 	   props.put("mail.smtp.auth", "true");
 	   props.put("mail.smtp.starttls.enable", "true");
