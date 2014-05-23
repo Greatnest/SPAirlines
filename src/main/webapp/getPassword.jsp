@@ -49,8 +49,13 @@
 
 
 try {
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
 	    
     String email=request.getParameter("email");
@@ -82,8 +87,8 @@ try {
    	resetlink.append(userID);
    	String linkreset=resetlink.toString();
    	
-	   final String username = "ngquiet@gmail.com";
-	   final String password = "areyoumad12";
+	   final String username = "airlinessp@gmail.com";
+	   final String password = "p@$$w0rdr3s3t";
 	   Properties props = new Properties();
 	   props.put("mail.smtp.auth", "true");
 	   props.put("mail.smtp.starttls.enable", "true");
@@ -101,7 +106,7 @@ try {
 
 	   	Message message = new MimeMessage(session1);
 	  
-	   	message.setFrom(new InternetAddress("ngquiet@gmail.com"));
+	   	message.setFrom(new InternetAddress("airlinessp@gmailc.om"));
 	   	message.setRecipients(Message.RecipientType.TO,
 	   	InternetAddress.parse(email));
 	   	message.setSubject("SP Airlines Reset Password");
@@ -120,7 +125,7 @@ try {
     
 	
 }catch(Exception e) {
-	out.println("Please contact the administrator");
+	out.println(e);
 	
 	
 }
