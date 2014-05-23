@@ -35,7 +35,7 @@
 				</label><br/><br/>
 				
 				<input type="submit" class="submit" value="Login"/>
-				<a href="forgetPassword.jsp">Forgot Password?</a>
+	
 			</form>
 				
 			</div>
