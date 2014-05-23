@@ -106,7 +106,7 @@ try {
 
 	   	Message message = new MimeMessage(session1);
 	  
-	   	message.setFrom(new InternetAddress("airlinessp@gmailc.om"));
+	   	message.setFrom(new InternetAddress(username));
 	   	message.setRecipients(Message.RecipientType.TO,
 	   	InternetAddress.parse(email));
 	   	message.setSubject("SP Airlines Reset Password");
