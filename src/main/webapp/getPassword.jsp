@@ -49,13 +49,8 @@
 
 
 try {
-	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
     Connection conn=DriverManager.getConnection(connURL);
 	    
     String email=request.getParameter("email");
@@ -87,8 +82,8 @@ try {
    	resetlink.append(userID);
    	String linkreset=resetlink.toString();
    	
-	   final String username = "airlinessp@gmail.com";
-	   final String password = "p@$$w0rdr3s3t";
+	   final String username = "ngquiet@gmail.com";
+	   final String password = "areyoumad12";
 	   Properties props = new Properties();
 	   props.put("mail.smtp.auth", "true");
 	   props.put("mail.smtp.starttls.enable", "true");
