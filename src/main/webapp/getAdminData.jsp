@@ -18,14 +18,15 @@
 
 <%
 	try {
-		String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
+		Statement stmt=conn.createstatement();
+		
 		String sqlStr = "SELECT * FROM admin where userid='"+username+"'and password='"+password+"'";         
 		ResultSet rs = stmt.executeQuery(sqlStr);
 		
