@@ -111,7 +111,7 @@
  		String arriveTime=rs.getString("arrivalTime");
  		String dateArrive=rs.getString("dateOfArrival");
  		String interconnect=rs.getString("interconnect");
- 		String layover=rs.getString("layoverTime");
+ 		String layover=rs.getString("overlayTime");
  		
  	%>	<table>
  		<th class="th2"> <span class="bold">Flight Schedule ID: </span>&nbsp;&nbsp;&nbsp;

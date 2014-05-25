@@ -87,7 +87,7 @@
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
 	
-	String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity) Values(?,?,?,?)";
+	String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity, imagepath) Values(?,?,?,?,?)";
 			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 			pstmt.setInt(1,craftID);
 			pstmt.setInt(2,flightNo);

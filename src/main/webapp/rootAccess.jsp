@@ -66,7 +66,7 @@
 			
 			
 			<div id="maincon">
-				<h1>Welcome, admin</h1>
+				<h1>Welcome</h1>
 				<p class="para">
 				Please look at the left side bar for access to your admin privileges
 				</p>
