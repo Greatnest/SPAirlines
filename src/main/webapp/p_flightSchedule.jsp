@@ -85,7 +85,7 @@
 <%					while(rs.next()){
 			 		String origin=rs.getString("originAirport");
 %>				        
-						<option value="<%=origin %>"><%=origin %>,<%=country%></option>
+						<option value="<%=origin %>"><%=origin %></option>
 <% } %>
 			        </select>
 					</label><br/><br/>
