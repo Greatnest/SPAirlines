@@ -87,6 +87,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
+	Statement stmt=conn.createStatement();
 	
 	String sqlStr="SELECT * FROM aircraft";  
 	ResultSet rs = stmt.executeQuery(sqlStr);

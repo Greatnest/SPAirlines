@@ -184,7 +184,7 @@ try {
 			String dateOfArrival=rs3.getString("dateOfArrival");
 			String desAirport=rs3.getString("destinationAirport");
 			String oriAirport=rs3.getString("originAirport");
-			String layover=rs3.getString("layoverTime");
+			String layover=rs3.getString("overlayTime");
 				
 			
 %>			<!-- Collapsible table starts here! -->
@@ -340,7 +340,7 @@ try {
 			String dateOfArrival=rs3.getString("dateOfArrival");
 			String desAirport=rs3.getString("destinationAirport");
 			String oriAirport=rs3.getString("originAirport");
-			String layover=rs3.getString("layoverTime");
+			String layover=rs3.getString("overlayTime");
 				
 			
 %>			<!-- Collapsible table starts here! -->

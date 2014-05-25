@@ -55,10 +55,9 @@
 			
 			
 			<div id="maincon">
-				<h1>Joseph, Joker &amp; Jacqueline</h1>
+				<h1>Invalid password or username</h1>
 				<p class="para">
-					Meow, Meow! Need some laughter, entertainment, or feline help? You've come to the best place for it! :)<br /><br /><br />
-					Do enjoy your time here and I do hope that your love for feline grows exponentially thereafter! Have fun :)
+					You have entered an invalid password or username, please try again.
 				<br /><br />
 				</p>
 			
