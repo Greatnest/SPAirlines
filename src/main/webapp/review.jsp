@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.sql.*" %>
+ <%@ page import="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +11,11 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -55,10 +60,13 @@
 			
 			
 			<div id="maincon">
-				<h1>Contact Us</h1>
-
-
-<%	
+				<h1>Reviews</h1>
+				<p class="para"> Thank you very much for travelling with SP Airlines. Do feel free to drop us a review
+				about your experiences with us. Click <a href="submitReview.jsp">here</a> to submit a review.	
+				<br />
+				</p>
+				<div id="datatable">
+<%
 try {
     // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
@@ -69,35 +77,25 @@ try {
     // Step 4: Create Statement object
     Statement stmt=conn.createStatement();
 
-
-	String name=request.getParameter("fedname");
-	String email=request.getParameter("fedEmailinput");
-	String contactno=request.getParameter("fedcontactno.");
-	String feedback=request.getParameter("fedfeedback");
+	String sqlStr="Select * from review";
 	
-	
-	String sqlStr="Insert into enquiry(name,email,contactNo,feedback) Values(?,?,?,?)";
 	PreparedStatement pstmt=conn.prepareStatement(sqlStr);
-	pstmt.setString(1,name);
-	pstmt.setString(2,email);
-	pstmt.setString(3,contactno);
-	pstmt.setString(4,feedback);
-
+	ResultSet rs=pstmt.executeQuery();
 	
-	int rec=pstmt.executeUpdate();
-		if (rec==1){
-			%> <p class="para">
-			Your queries has been submitted and our customer service staffs will attend to them shortly. Thank you very much for visiting SP Arlines,
-			we hope you have an enjoyable time flying with us.
-			</p>
-			<%
-			
-		}else{
-			%> <p class="para">
-			Unfortunately, the server is currently down for maintenance. We apologise for the inconvenience caused, please try again later.
-			</p>
-			<%
-	}	
+	while(rs.next()){
+		String salutation=rs.getString("salutation");
+		String name=rs.getString("name");
+		String rating=rs.getString("rating");
+		String review=rs.getString("review");
+%> 
+		<div class="review">
+		<p class="para"><span class="bold2"><%=salutation %> <%=name %></span><br/><br/>
+		<span class="bold2">Rating:</span> <%=rating %><br/>
+		"<%=review %>"</p><br/>
+		</div><br/><br/>
+		
+<%}
+	
 		
 		conn.close();
 					
@@ -105,12 +103,12 @@ try {
 	
 	out.println(e);
 } %>
-
-
-		</div>
+			
+			</div>
+			</div>
 			
 		
-</div>
+		</div>
 		
 	<footer>
 		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>

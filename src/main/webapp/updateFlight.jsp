@@ -6,23 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SP Airlines</title>
-   <style type="text/css"><%@include file="css/style.css" %></style>
-   <style type="text/css"><%@include file="css/lightbox.css" %></style>
+   <style type="text/css">
+    <%@include file="css/style.css" %></style>
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="js/lightbox-2.6.min.js"></script>
 	<script type="text/javascript" src="js/Rotator.js"></script>
-	
-	<script type="text/javascript">
-    $(document).ready( function() {
-        $('#sidebar').height($('#content').height());
-    });
-	</script>
-	
 </head>
-<body> 
-
+<body>
 <div id="wrapper">
 		<ul id = "coolMenu">
 				<li><a href="index.jsp">Home</a></li>
@@ -32,14 +23,13 @@
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
+				<li><a href="p_flightSchedule.jsp">Flight Schedule &amp; Online Booking</a></li>
 				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>
-				<li><a href="review.jsp">Reviews</a></li>	
+				</li>	
 		</ul>
 		
 		<div id="bannerbox">
@@ -73,85 +63,87 @@
 	        	</div>
 			</div>
 			
-			
 			<div id="maincon">
-				<h1>View Aircraft Information</h1>
-				<div id="datatable">
+				<h1>Update Flight Schedule</h1>
 
-<%try {
-    // Step1: Load JDBC Driver
-    Class.forName("com.mysql.jdbc.Driver");
-    // Step 2: Define Connection URL
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
-    // Step 3: Establish connection to URL
-    Connection conn=DriverManager.getConnection(connURL);
-    // Step 4: Create Statement object
-    Statement stmt=conn.createStatement();
+<% 
+	int FSID=Integer.parseInt(request.getParameter("ID"));
+	int aircraftID=Integer.parseInt(request.getParameter("craftID"));
+	String origin=request.getParameter("origin");
+	String destination=request.getParameter("destination");
+	String country=request.getParameter("country");
+	String economy=request.getParameter("economy");
+	String business=request.getParameter("business");
+	String firstclass=request.getParameter("first");
+	String dateDepart=request.getParameter("dateDepart");
+	String departTime=request.getParameter("departTime");
+	String duration=request.getParameter("duration");
+	String arriveTime=request.getParameter("arriveTime");
+	String interconnect=request.getParameter("interconnect");
+	String layover=request.getParameter("layover");
+	String dateArrive=request.getParameter("dateArrive");
 	
-	String sqlStr="SELECT * FROM aircraft";  
-	ResultSet rs = stmt.executeQuery(sqlStr);
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+	     Connection conn=DriverManager.getConnection(connURL); 
+		String sqlStr="UPDATE flightschedule SET aircraftID = ?, originAirport = ?, destinationAirport = ?, country = ?, economyCost = ?,businessClassCost = ?, firstClassCost = ?, dateOfDepart = ?, duration = ?, departTime = ?, arrivalTime = ?, interconnect = ?, layoverTime = ?, dateOfArrival = ?" 
+						+" WHERE flightScheduleID = "+FSID+"";
+			
+			
+		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
+		pstmt.setInt(1,aircraftID);
+		pstmt.setString(2,origin);
+		pstmt.setString(3,destination);
+		pstmt.setString(4,country);
+		pstmt.setString(5,economy);
+		pstmt.setString(6,business);
+		pstmt.setString(7,firstclass);
+		pstmt.setString(8,dateDepart);
+		pstmt.setString(9,duration);
+		pstmt.setString(10,departTime);
+		pstmt.setString(11,arriveTime);
+		pstmt.setString(12,interconnect);
+		pstmt.setString(13,layover);
+		pstmt.setString(14,dateArrive);
+				
+		int rec=pstmt.executeUpdate();
+		
+		
+		if (rec==1){
+				%> <p class="para">
+				The database is successfully updated.
+				</p>
+				<%
+				
+		}else{
+				%> <p class="para">
+				Unfortunately, the database is not successfully updated. Please check your input.
+				</p>
+				<%
+		}	
+		
+		conn.close();
+				
+	}catch(Exception e){
+		
+		out.println(e);
+	}
 	
-	%> <form action="aircraftHandle.jsp" method="post"> 
-	<table id="aircraftview">
- 	<th><span class="bold2">Aircraft ID</span></th>
- 	<th><span class="bold2">Model</span></th>
- 	<th><span class="bold2">Flight No.</span></th>
- 	<th><span class="bold2">Passenger Capacity</span></th>
- 	<th><span class="bold2">Plane layout</span></th>
- 	<th><span class="bold2">Del</span></th>
 	
-	<%
- 	while(rs.next()){ //retrieve each table result one by one
- 		int aircraftID=Integer.parseInt(rs.getString("aircraftID"));
- 		int flightNo=Integer.parseInt(rs.getString("flightNo"));
- 		String model=rs.getString("model");
- 		int capacity=Integer.parseInt(rs.getString("capacity"));
- 		String image=rs.getString("imagepath");
- 
- 		
- 	%>	<tr>
- 		<td>
- 			<input type="submit" name="edit" class="edit" value="<%=aircraftID %>"/>
- 		</td>
- 		<td><%= model %></td>
- 		<td><%= flightNo %></td>
- 		<td><%= capacity %></td>
- 		<td><a href="<%=image %>" data-lightbox="plane" ><img src ="<%= image%>" width="100" height="100"/></a></td>
- 		<td><input type="checkbox" name="del" value="<%=aircraftID %>"/></td>
- 	
- 		</tr>
- 		
- 		
- 	
- 	<% } %>
- 	</table><br/><br/>
- 		
- 		
- 		
-			<fieldset>
-				<input type="submit" name="delete" class="submit" value="Delete">
-			</fieldset>
-		</form>
- <%
- 
- 	conn.close();
+%>
 	
-}catch(Exception e){
 	
-	out.println(e);
-} %>
-
-			</div>
-		</div>
+</div>
 			
 		
-</div>
+		</div>
 		
 	<footer>
 		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>
 	</footer>
 		
-	</div>
+</div>
 
 
 </body>

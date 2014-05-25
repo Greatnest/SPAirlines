@@ -11,6 +11,11 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -33,12 +38,12 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Please login to manage your online booking.</p> <br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
 				<input type="text" class="inputLogin" name="userid"/>
@@ -57,9 +62,21 @@
 			<div id="maincon">
 				<h1>Frequently Asked Questions</h1>
 				<p class="subtitle">Can I change my tickets booked online?
-				</p><br/>
-				<p class="para">
-				
+				<p class="para2">
+				Yes. You can log into your account and manage your online ticket booking. Do note that
+				any final amendments must be finalized within 14 days after booking or a penalty fee will be imposed. 
+				</p>
+				<p class="subtitle">What is the maximum weight of luggage allowed to be checked in before an additional fee is required?
+				<p class="para2">
+				First Class: 40kg<br/>
+				Business Class: 30kg<br/>
+				Economy Class: 20kg
+				</p>
+				<p class="subtitle">Due to last minute changes, I cannot fly. Can I cancel my booking?
+				<p class="para2">
+				 You can cancel your flight within 14 days of booking and 1 month prior to the flight. 
+				 After which, you will only receive 50% of your payment as refund.
+				 No refund will be made if booking is cancelled 1 week before the flight.
 				</p>
 			
 			</div>

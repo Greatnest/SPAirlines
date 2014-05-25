@@ -1,4 +1,17 @@
-<%@include file="header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ page import="java.sql.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SP Airlines</title>
+   <style type="text/css">
+    <%@include file="css/style.css" %></style>
+	<link rel="shortcut icon" href="icons/favicon.ico"/>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+</head>
 <body>
 <div id="wrapper">
 		<ul id = "coolMenu">
@@ -9,32 +22,33 @@
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Flight Schedule &amp; Online Booking</a></li>
-				<li><a href="#">Enquiries</a>	
+				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
+				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>	
+				</li>
+				<li><a href="review.jsp">Reviews</a></li>	
 		</ul>
 		
 		<div id="bannerbox">
-			<!-- <img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/> -->
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Please login to manage your online booking.</p> <br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
-				<input type="text" name="userid"/>
-				</label><br/><br/>
+				<input type="text" class="inputLogin" name="userid"/>
+				</label><br/>
 				
 				<label>Password: 
-				<input type="password" name="password"/>
-				</label><br/><br/>
+				<input type="password" class="inputLogin" name="password"/>
+				</label><br/>
 				
-				<input type="submit" class="submit" value="Login"/>
+				<input type="submit" class="submitLong" value="Login"/>
 			</form>
 			
 			</div>
@@ -42,42 +56,59 @@
 			
 			<div id="maincon">
 				<h1>View Flight Schedules</h1>
-				<form action="P_fullflightSchedule.jsp" id="form2" method="post">
-				
-	
+				<form action="p_flightScheduleResult.jsp" id="form3" method="post">
 <%
-try {
-	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
-    Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);
-    Statement stmt=conn.createStatement();
-   
-    String sqlStr="select distinct originAirport from flightschedule";
-	ResultSet rs=stmt.executeQuery(sqlStr);
-}catch(Exception e){
-	out.println(e);
-}	
-%>				    
-<fieldset>
-					<label> Origin Airport:
+		try {
+		    // Step1: Load JDBC Driver
+		    Class.forName("com.mysql.jdbc.Driver");
+		    // Step 2: Define Connection URL
+		    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+		    // Step 3: Establish connection to URL
+		    Connection conn=DriverManager.getConnection(connURL);
+		    // Step 4: Create Statement object
+		    Statement stmt=conn.createStatement();
+		   
+		    String sqlStr="select distinct originAirport from flightschedule";
+		    String sqlStr2="select distinct destinationAirport from flightschedule";
+		    PreparedStatement pstmt = conn.prepareStatement(sqlStr);	
+		    PreparedStatement pstmt2 = conn.prepareStatement(sqlStr2);	
+		    ResultSet rs = pstmt.executeQuery();
+		    ResultSet rs2 = pstmt2.executeQuery();
+		    
+		    %>		    
+		 		
+		
+				<fieldset>
+					<label> Flying from:
 					<select  name="origin">
-				        <option value="Japan Nakata Airport" selected>Japan Nakata Airport</option>
-				        <option value="South Korea">South Korea</option>
-				        <option value="Singapore Changi Airport">Singapore Changi Airport</option>
+					
+<%					while(rs.next()){
+			 		String origin=rs.getString("originAirport");
+%>				        
+						<option value="<%=origin %>"><%=origin %></option>
+<% } %>
 			        </select>
-					</label><br/><br/>    
-			        <label> Destination Airport:
+					</label><br/><br/>
+			        
+
+			        <label> Flying to:
 			        <select  name="destination">
-				        <option value="Japan Nakata Airport" selected>Japan Nakata Airport</option>
-				        <option value="South Korea">South Korea</option>
-				        <option value="Singapore Changi Airport">Singapore Changi Airport</option>
+			        
+<%					while(rs2.next()){
+			 		String destination=rs2.getString("destinationAirport");
+%>				        
+						<option value="<%=destination %>"><%=destination %></option>
+<% } %>
 			        </select>
 			        </label><br/><br/>
+	
+			        
+<%		conn.close();
+
+		}catch(Exception e){
+			out.println(e);
+		}
+%>			        
 			        
 			        <label> Departure Date:
 			         <select  name="departureYYYY">
@@ -99,7 +130,7 @@ try {
 			            <option value="9">Sep</option>
 			            <option value="10">Oct</option>
 			            <option value="11">Nov</option>
-			            <option value="12">Dec</option>
+			            <option value="12">De</option>
 			        </select>
 					<select  name="departureDD">
 						<option value="null" selected>Day</option>
@@ -193,14 +224,30 @@ try {
 			            <option value="30">30</option> 
 			            <option value="31">31</option> 
 			        </select>
-			        </label><br/><br/>
+			        </label><br/><br/><br/>
 		        </fieldset>
-		   
+		        
 		        <fieldset>
-				<input type="submit" class="submit" value="Submit">
+				<input type="submit" class="submit" value="submit">
 				</fieldset>
+			
 			</form>
+			
+	
+			
+			
+				
 			</div>
+			
+		
 		</div>
-	</div>	
-<%@include file="footer.jsp" %>
+		
+	<footer>
+		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>
+	</footer>
+		
+	</div>
+
+
+</body>
+</html>

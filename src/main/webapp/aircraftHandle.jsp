@@ -33,13 +33,13 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar"><br/>
 				<div class="sidenav1">
-	        	<p class="sidenavTitle1"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
 		            <ul class="list1"> <br/>
 		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
 		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
@@ -47,7 +47,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav2">
-	        	<p class="sidenavTitle2"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
 		            <ul class="list2"> <br/>
 		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
 		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
@@ -55,7 +55,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav3">
-	        	<p class="sidenavTitle3"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
 		            <ul class="list3"> <br/>
 		            	<li><a href="changePasswd.jsp">Change password</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
@@ -74,6 +74,30 @@ if (request.getParameter("edit") != null) {
     
 	int aircraftID = Integer.parseInt(request.getParameter("edit"));
 	
+	try {
+	    // Step1: Load JDBC Driver
+	    Class.forName("com.mysql.jdbc.Driver");
+	    // Step 2: Define Connection URL
+	    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+	    // Step 3: Establish connection to URL
+	    Connection conn=DriverManager.getConnection(connURL);
+	    // Step 4: Create Statement object
+	
+	    String sqlStr="Select * from aircraft where aircraftID = ?";
+			
+		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
+		pstmt.setInt(1,aircraftID);
+		
+		ResultSet rs=pstmt.executeQuery();
+		
+		while(rs.next()){
+		String flightNo=rs.getString("flightNo");
+		String model=rs.getString("model");
+		String capacity=rs.getString("capacity");
+		String imagepath=rs.getString("imagepath");
+		
+		
+	
 %>	<form action= updateAircraft.jsp id="form2" method="post">
 	
 	<fieldset>
@@ -83,15 +107,19 @@ if (request.getParameter("edit") != null) {
 		</label><br/><br/>
 		
 		<label>Flight No.: 
-		<input type="text" name="flightNo">
+		<input type="text" name="flightNo" value="<%=flightNo%>">
 		</label></br></br>
 		
 		<label>Aircraft Model: 
-		<input type="text" name="craftModel">
+		<input type="text" name="craftModel" value="<%=model%>">
 		</label></br></br>
 					
 		<label>Passenger Capacity: 
-		<input type="text" name="capacity">
+		<input type="text" name="capacity" value="<%=capacity%>">
+		</label><br/></br>
+		
+		<label>Plane Seat Layout: 
+		<input type="text" name="image" value="<%=imagepath%>">
 		</label><br/></br></br></br>
 		</fieldset>
 				
@@ -102,8 +130,16 @@ if (request.getParameter("edit") != null) {
 	
 	
 	
-<%    
-} 
+<% 
+		}
+conn.close();
+
+}catch(Exception e){
+	
+	out.println(e);
+}
+}
+
 
 
 
@@ -118,15 +154,15 @@ if (request.getParameter("delete") != null) {
 	}
 
 try {
-    	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
+    // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    // Step 2: Define Connection URL
+    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    // Step 3: Establish connection to URL
     Connection conn=DriverManager.getConnection(connURL);
-    Connection conn=DriverManager.getConnection(connURL);
+    // Step 4: Create Statement object
+	
+
 	int count = 0;
 		for(int i=0; i<del.length;i++){
 			
@@ -137,6 +173,8 @@ try {
 	}
 		
 	response.sendRedirect("viewAircraftInfo.jsp");
+	
+	conn.close();
 	
 }catch(Exception e){
 	

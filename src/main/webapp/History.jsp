@@ -22,32 +22,33 @@
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="p_flightSchedule.jsp">Flight Schedule &amp; Online Booking</a></li>
+				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
 				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>	
+				</li>
+				<li><a href="review.jsp">Reviews</a></li>	
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900px" height="450px" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Please login to manage your online booking.</p> <br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
-				<input type="text" name="userid"/>
-				</label><br/><br/>
+				<input type="text" class="inputLogin" name="userid"/>
+				</label><br/>
 				
 				<label>Password: 
-				<input type="password" name="password"/>
-				</label><br/><br/>
+				<input type="password" class="inputLogin" name="password"/>
+				</label><br/>
 				
-				<input type="submit" class="submit" value="Login"/>
+				<input type="submit" class="submitLong" value="Login"/>
 			</form>
 			
 			</div>
@@ -55,22 +56,17 @@
 			
 			<div id="maincon">
 				<h1>Our History</h1>
-				<p class="para">SP Airlines have been bringing our customers a great experience since 1999. We were set up to help with the
-				overwhelming response at Singapore Changi Airport. Since then, we have been improving ourselves to ensure that
-				we bring you the best experience possible. In 2004, we had launched our larger JL aircrafts in order to fit
-				the huge amount of customers using SP Airlines. With that, we had managed to stay at the top as the Best Airline
-				in 2005! We have been winning it for every consecutive year after that and it is thanks to you that we 
-				have managed to pull off such a feat!<br/>
-				We also have ensured that all our staff are well-trained and experienced at their field of work and have been
-				improving our quality of service over the years since we have started. We are here to ensure you will fly with
-				no regrets!
+				<p class="para">
+				SP airlines was founded by Ms Jacqueline Cheong &amp; Mr Lindon Ng in the year 1996. Both esteemed
+				founders pursued a Masters in Aviation Management in Cranfield University, United Kingdom. 
+				The letters 'SP' are an abbreviation of the words "So Possible", which represents the founders' belief
+				that this airline company will bring forth new possibilities in the aviation industry.<br/><br/> 
+				Starting with only 3 aircrafts and operating passenger flights to Japan, Taiwan and Manila, the airline company has seen evolved
+				tremendously to become an internationally renowned airline in the year 2004, operating flights to all parts of the world. The
+				addition of our latest and larger JL series aircrafts has propelled SP airlines to the top of the airline ranking chart in the year
+				2005 until present.	
+				<br /><br />
 				</p>
-				
-				
-				
-					
-
-			
 			
 			</div>
 			
@@ -86,4 +82,3 @@
 
 </body>
 </html>
-

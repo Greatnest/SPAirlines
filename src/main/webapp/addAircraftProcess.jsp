@@ -35,13 +35,13 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/mainbanner.jpg" width="800" height="400" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar"><br/>
 				<div class="sidenav1">
-	        	<p class="sidenavTitle1"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
 		            <ul class="list1"> <br/>
 		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
 		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
@@ -49,7 +49,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav2">
-	        	<p class="sidenavTitle2"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
 		            <ul class="list2"> <br/>
 		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
 		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
@@ -57,7 +57,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav3">
-	        	<p class="sidenavTitle3"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
 		            <ul class="list3"> <br/>
 		            	<li><a href="changePasswd.jsp">Change password</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
@@ -73,20 +73,15 @@
 	int flightNo=Integer.parseInt(request.getParameter("flightNo"));
 	String model=request.getParameter("craftModel");
 	int capacity=Integer.parseInt(request.getParameter("capacity"));
+	String image=request.getParameter("image");
 	
 	
 	
 	try {
-	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
-    Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);
-
-			String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity) Values(?,?,?,?)";
+		    Class.forName("com.mysql.jdbc.Driver");
+		    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+		     Connection conn=DriverManager.getConnection(connURL); 
+			String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity, imagepath) Values(?,?,?,?,?)";
 				
 				
 			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
@@ -94,6 +89,7 @@
 			pstmt.setInt(2,flightNo);
 			pstmt.setString(3,model);
 			pstmt.setInt(4, capacity);
+			pstmt.setString(5, image);
 			
 			
 			int rec=pstmt.executeUpdate();
@@ -112,6 +108,8 @@
 				
 				
 <% 				}
+			
+		conn.close();
 			
 	}catch(Exception e){
 		

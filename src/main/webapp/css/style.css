@@ -68,19 +68,36 @@ h1{
 	padding-botton: 2em;
 }
 
-table,th,td
-{
+#aircraftview, th, td{
 border:1px solid black;
 border-collapse:collapse;
 text-align:center;
 width:550px;
 padding: 0.5em;
+font-weight: normal;
 }
 
-img{
-	border: none;
-	vertical-align: middle;
+table, .th2, .td2
+{
+border:1px solid black;
+border-collapse:collapse;
+text-align:left;
+width:550px;
+padding: 0.5em;
+font-weight: normal;
 }
+
+.review{
+	width: 500px;
+	text-align: left;
+	background-color:#E5E5E5;
+	padding: 0;
+	border-bottom-left-radius: 20px;  
+	border-bottom-right-radius: 20px; 
+	border-top-left-radius: 20px;  
+	border-top-right-radius: 20px; 
+}
+
 
 
 .titlebanner{
@@ -103,7 +120,7 @@ footer{
 	width: 900px;
 	margin: 0 auto;
 	padding: 0;
-	min-height: 850px;
+	min-height: 750px;
 }
 
 
@@ -133,7 +150,7 @@ footer{
 	display: block;
 	height: 39px;
 	line-height: 2em;
-	padding: 0.5em 2.2em;
+	padding: 0.5em 2.1em;
 	text-decoration: none;
 }
 #coolMenu ul {
@@ -143,7 +160,7 @@ footer{
 }
 #coolMenu ul li a {
 text-align: center;
-width: 125px;	
+width: 103px;	
 }
 #coolMenu li:hover ul.noJS {
 	display: block; 
@@ -183,7 +200,7 @@ width: 125px;
 
 #bannerbox{
 	width: 900px;
-	height: 450px;
+	height: 350px;
 	margin: 0 auto;
 	background: #1a546c;
 	padding: 0;
@@ -213,13 +230,17 @@ width: 125px;
 	width: 650px;
 	float: right;
 	height: inherit;
-	padding-bottom: 2em;
+	padding-bottom: 5em;
 }
 
 #datatable{
-	padding: 2em;
+	padding: 2em 2em 2em 3em;
 }
 
+	
+#flightview{
+	padding: 2em 1em 2em 0.5em;
+}
 
 /*used in footer*/
 #credits{
@@ -236,17 +257,6 @@ width: 125px;
 	text-align: center;
 }
 
-.sideBTN{
-	margin: 0 0 0.5em 0;
-	display: inline-block;
-	width: 200px;
-	padding: 0.7em 0;
-	background: #707070;
-	color: white;
-	text-decoration: none;
-	font-size: 24px;
-	font-family: "courier_primeregular", serif;
-}
 
 .sidenav1, .sidenav2, .sidenav3{
 	  width: inherit;
@@ -273,6 +283,7 @@ width: 125px;
 .list1, .list2, .list3{
 	text-align: left;
 	padding: 0 0 0 1em;
+	font-size: 18px;
 }
 
 .rotated{
@@ -313,7 +324,30 @@ a:hover{
 	font-family: "cardoregular", serif;
 	padding: 1.5em 2.5em 1.5em 2.5em;
 	font-size: 18px;
+}
 
+.para2{
+	text-align: left;
+	color: #3D3C3A;
+	font-family: "cardoregular", serif;
+	padding: 0 3em 1.5em 2.5em;
+	font-size: 18px;
+}
+
+.right{
+	text-align:right;
+	color: #3D3C3A;
+	font-family: "cardoregular", serif;
+	padding:0;
+	font-size: 18px;
+}
+
+.loginword{
+	text-align: center;
+	color: black;
+	font-family: "cardoregular", serif;
+	font-size: 17px;
+	padding: 1em 1em 0 1em;
 }
 
 
@@ -321,75 +355,17 @@ a:hover{
 	text-align: left;
 	color: #3D3C3A;
 	font-family: "cardoregular", serif;
-	padding: 1.5em 2em 1.5em 2em;
+	padding: 1.5em 3em 0 2.5em;
 	font-size: 18px;
 	font-weight: bold;
 }
 
-	
-.gallerybox{
-	text-align: center;
-	margin:1em auto 0 auto;
-	padding:0.5em;
-}
 
 .imgouter{
 	padding: 0.5em;
 	display: inline-block;
 }
 
-.Tipsouter{
-	padding: 0.5em;
-	text-align: center;
-}
-
-.TipsImg{
-	border-style: solid;
-	border-color: white;
-	border-width: 5px;
-	
-	transition: -webkit-transform .3s ease-out;
-	transition: -moz-transform .3s ease-out;
-	transition: transform .3s ease-out;
-}
-
-.TipsImg:hover{
--webkit-transform:scale(1.1);
-	-webkit-box-shadow:0px 0px 30px black;
-	-moz-transform:scale(1.1);
-	-moz-box-shadow:0px 0px 30px black;
-	transform: scale(1.1);
-}
-
-
-/*gallery photos effect - magnify and shadow*/
-.galimg {
-	transition: -webkit-transform .3s ease-out;
-	transition: -moz-transform .3s ease-out;
-	transition: transform .3s ease-out;
-}
-
-.galimg:hover{
-	-webkit-transform:scale(1.1);
-	-webkit-box-shadow:0px 0px 30px black;
-	-moz-transform:scale(1.1);
-	-moz-box-shadow:0px 0px 30px black;
-	transform: scale(1.1);
-}
-
-
-/*image magnification effect - splashpage and contact us*/
-.magnifyimg {
-	transition: -webkit-transform .3s ease-out;
-	transition: -moz-transform .3s ease-out;
-	transition: transform .3s ease-out;
-}
-
-.magnifyimg:hover{
-	-webkit-transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	transform: scale(1.1)
-}
 
 
 legend{
@@ -399,17 +375,37 @@ legend{
 legend span{
 	text-decoration: underline;
 	font-weight: bold;
+	font-size: 22px;
 	
 }
 
-.set{
-	
-	padding: 2em;
+.edit{
+	background: #707070;
+	padding: 5px 10px;
+	border:none;
+	color: white;
+	font-family: "courier_primeregular", serif;
+	margin: 0;
+	width: 50px;
+	text-align: center;
 }
 
-#checkin{
+.checkin{
 	float: right;
+	padding-right: 1em;
 }
+
+  
+.reset{
+	background: #707070;
+	padding: 5px 10px;
+	border:none;
+	color: white;
+	font-family: "courier_primeregular", serif;
+	margin-left: 1em;
+	font-size: 20px;
+	
+ }
   
 .submit{
 	background: #707070;
@@ -417,21 +413,23 @@ legend span{
 	border:none;
 	color: white;
 	font-family: "courier_primeregular", serif;
-	margin: 1em;
-	float: right;
+	margin: 0;
+	font-size: 20px;
+	
  }
  
  .submitLong{
 	background: #707070;
-	padding: 10px 10px;
+	padding: 8px 10px;
 	border:none;
 	color: white;
 	font-family: "courier_primeregular", serif;
 	margin: 1em;
-	width: 175px;
+	width: 170px;
+	font-size: 20px;
  }
  
-.submit:hover, .submitLong:hover{
+.submit:hover, .edit:hover, .submitLong:hover{
       background-color: #959292;
 	  color: white;
 }
@@ -448,11 +446,11 @@ fieldset {
   
  
 #form2 {
-	padding: 2em 6em 0 6em;
+	padding: 2em 10em 0 4.5em;
 }
 
 #form3{
-	padding: 2em 8em 0 8em;
+	padding: 3em 10em 0 10em;
 }
   
 input, textarea {
@@ -466,12 +464,13 @@ input, textarea {
   font-size: 1em;
   resize:none;
   border-radius: 5px;
-  width: 170px;
+  width: 165px;
   }
    
   
  textarea {
- width: 420px;}
+ width: 460px;
+ }
   
 
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -520,10 +519,16 @@ input:focus, textarea:focus{
 	font-family: "courier_primeregular", serif;
 }
 
+.bold2{
+	font-weight: bold;
+	padding: 0;
+}
+
 .bold{
 	font-weight: bold;
 	padding: 0 0 0 1em;
 }
+
 
 /* --------- COLLAPSIBLE PANELS ----------*/
  
@@ -547,7 +552,7 @@ input:focus, textarea:focus{
     color:#666;
 }
 .expandable-panel-heading h2 {
-    padding:14px 10px 9px 15px; 
+    padding:14px 7px 9px 7px; 
     font-size:18px;
     line-height:20px;
     font-weight: normal;
@@ -573,7 +578,6 @@ input:focus, textarea:focus{
     right:15px;
 }
 .expandable-panel-content img {
-    float:right;
     padding-left:12px;
 }
 .header-active {

@@ -12,6 +12,11 @@
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<script type="text/javascript" src="js/Rotator.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -34,13 +39,13 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar"><br/>
 				<div class="sidenav1">
-	        	<p class="sidenavTitle1"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
 		            <ul class="list1"> <br/>
 		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
 		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
@@ -48,7 +53,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav2">
-	        	<p class="sidenavTitle2"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
 		            <ul class="list2"> <br/>
 		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
 		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
@@ -56,7 +61,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav3">
-	        	<p class="sidenavTitle3"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
 		            <ul class="list3"> <br/>
 		            	<li><a href="changePasswd.jsp">Change password</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
@@ -66,7 +71,7 @@
 			
 			<div id="maincon">
 				<h1>Add New Flight Schedule</h1>
-				<form action= addFlightSchedule.jsp id="form2" method="post">
+				<form action= addFlightSchedule.jsp id="form3" method="post">
 				
 				<fieldset>
 				<legend><span>Flight Information</span></legend><br/>
@@ -94,20 +99,28 @@
 					<input type="text" name="duration">
 					</label><br/><br/>
 					
-					<label>Date:
-					<input type="text" name="date" value="YYYY-MM-DD">
+					<label>Departure Date:
+					<input type="text" name="dateDepart" value="YYYY-MM-DD">
 					</label><br/><br/>
 					
 					<label>Departing:
 					<input type="text" name="departTime" value="HH:MM:SS">
 					</label><br/><br/>
 					
-					<label>Arrival:
+					<label>Arrival Date:
+					<input type="text" name="dateArrive" value="YYYY-MM-DD">
+					</label><br/><br/>
+					
+					<label>Arriving:
 					<input type="text" name="arriveTime" value="HH:MM:SS">
 					</label><br/><br/>
 					
-					<label>Interconnect (if any):
-					<input type="text" name="interconnect">
+					<label>Interconnect ID (if any):
+					<input type="text" name="interconnect" value="-">
+					</label><br/><br/>
+					
+					<label>Layover Time (if any):
+					<input type="text" name="layover" value="0">
 					</label><br/><br/><br/>
 					
 				</fieldset>
@@ -125,7 +138,7 @@
 					
 					<label>First Class:
 					<input type="text" name="first">
-					</label><br/><br/>
+					</label><br/><br/><br/>
 					
 				</fieldset>
 				

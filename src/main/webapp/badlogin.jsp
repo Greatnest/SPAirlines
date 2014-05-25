@@ -33,12 +33,12 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Sorry, you've entered an invalid User ID or password. <br/><br/> Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Sorry, you've entered an invalid User ID or password! <br/><br/> Please login to manage your online booking. </p><br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
 				<input type="text" class="inputLogin" name="userid"/>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.sql.*" %>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +11,11 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -55,62 +60,44 @@
 			
 			
 			<div id="maincon">
-				<h1>Contact Us</h1>
-
-
-<%	
-try {
-    // Step1: Load JDBC Driver
-    Class.forName("com.mysql.jdbc.Driver");
-    // Step 2: Define Connection URL
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
-    // Step 3: Establish connection to URL
-    Connection conn=DriverManager.getConnection(connURL);
-    // Step 4: Create Statement object
-    Statement stmt=conn.createStatement();
-
-
-	String name=request.getParameter("fedname");
-	String email=request.getParameter("fedEmailinput");
-	String contactno=request.getParameter("fedcontactno.");
-	String feedback=request.getParameter("fedfeedback");
-	
-	
-	String sqlStr="Insert into enquiry(name,email,contactNo,feedback) Values(?,?,?,?)";
-	PreparedStatement pstmt=conn.prepareStatement(sqlStr);
-	pstmt.setString(1,name);
-	pstmt.setString(2,email);
-	pstmt.setString(3,contactno);
-	pstmt.setString(4,feedback);
-
-	
-	int rec=pstmt.executeUpdate();
-		if (rec==1){
-			%> <p class="para">
-			Your queries has been submitted and our customer service staffs will attend to them shortly. Thank you very much for visiting SP Arlines,
-			we hope you have an enjoyable time flying with us.
-			</p>
-			<%
-			
-		}else{
-			%> <p class="para">
-			Unfortunately, the server is currently down for maintenance. We apologise for the inconvenience caused, please try again later.
-			</p>
-			<%
-	}	
-		
-		conn.close();
+				<h1>Reviews</h1>
+				<form action="processReview.jsp" id="form2" method=post>
+				
+				<fieldset>
+				
+					<label>Salutation:
+					<input type="text" name="salutation"/>
+					</label><br/><br/>
 					
-}catch(Exception e){
-	
-	out.println(e);
-} %>
+					<label>Name:
+					<input type="text" name="name"/>
+					</label><br/><br/>
+					
+					<label>Email:
+					<input type="text" name="email"/>
+					</label><br/><br/>
 
-
-		</div>
+					<label>Rating:
+					<input type="text" name="rating" value="/10"/>
+					</label><br/><br/><br/>
+					
+					<label>Review
+					<textarea name="review" rows="15" cols="87"></textarea>
+					</label><br/><br/><br/>
+				</fieldset>
+				
+				<fieldset>					
+				<input type="submit" class="reset" value="Submit" />
+				<input type="reset" class="submit" value="Reset"/>
+				</fieldset>
+				
+				
+			</form>
+			
+			</div>
 			
 		
-</div>
+		</div>
 		
 	<footer>
 		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>

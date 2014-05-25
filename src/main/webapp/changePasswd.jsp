@@ -34,13 +34,13 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar"><br/>
 				<div class="sidenav1">
-	        	<p class="sidenavTitle1"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
 		            <ul class="list1"> <br/>
 		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
 		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
@@ -48,7 +48,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav2">
-	        	<p class="sidenavTitle2"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
 		            <ul class="list2"> <br/>
 		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
 		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
@@ -56,7 +56,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav3">
-	        	<p class="sidenavTitle3"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
 		            <ul class="list3"> <br/>
 		            	<li><a href="changePasswd.jsp">Change password</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
@@ -67,7 +67,7 @@
 			
 			<div id="maincon">
 				<h1>Change Password</h1>
-				<form action= "changePasswdProcess.jsp" id="form2" method="post">
+				<form action= "changePasswdProcess.jsp" id="form3" method="post">
 				
 				<fieldset>
 					<label>User ID:
@@ -84,7 +84,7 @@
 					
 					<label>Confirm Password: 
 					<input type="password" name="confnewpasswd">
-					</label></br></br>
+					</label></br></br></br>
 				</fieldset>
 				
 				<fieldset>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.sql.*" %>
+ <%@ page import="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +11,11 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -55,10 +60,15 @@
 			
 			
 			<div id="maincon">
-				<h1>Contact Us</h1>
+				<h1>Reviews</h1>
+				
+<%
+String salutation=request.getParameter("salutation");
+String name=request.getParameter("name");
+String email=request.getParameter("email");
+String rating=request.getParameter("rating");
+String review=request.getParameter("review");
 
-
-<%	
 try {
     // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
@@ -69,25 +79,20 @@ try {
     // Step 4: Create Statement object
     Statement stmt=conn.createStatement();
 
-
-	String name=request.getParameter("fedname");
-	String email=request.getParameter("fedEmailinput");
-	String contactno=request.getParameter("fedcontactno.");
-	String feedback=request.getParameter("fedfeedback");
 	
-	
-	String sqlStr="Insert into enquiry(name,email,contactNo,feedback) Values(?,?,?,?)";
+	String sqlStr="Insert into review(salutation, name, email, rating, review) Values(?,?,?,?,?)";
 	PreparedStatement pstmt=conn.prepareStatement(sqlStr);
-	pstmt.setString(1,name);
-	pstmt.setString(2,email);
-	pstmt.setString(3,contactno);
-	pstmt.setString(4,feedback);
-
+	pstmt.setString(1,salutation);
+	pstmt.setString(2,name);
+	pstmt.setString(3,email);
+	pstmt.setString(4,rating);
+	pstmt.setString(5,review);
 	
 	int rec=pstmt.executeUpdate();
+	
 		if (rec==1){
 			%> <p class="para">
-			Your queries has been submitted and our customer service staffs will attend to them shortly. Thank you very much for visiting SP Arlines,
+			Your review has been submitted. Thank you very much for visiting SP Arlines,
 			we hope you have an enjoyable time flying with us.
 			</p>
 			<%
@@ -106,11 +111,11 @@ try {
 	out.println(e);
 } %>
 
-
-		</div>
+			
+			</div>
 			
 		
-</div>
+		</div>
 		
 	<footer>
 		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>

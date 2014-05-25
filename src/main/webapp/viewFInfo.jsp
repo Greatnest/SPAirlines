@@ -11,6 +11,7 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/Rotator.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -22,29 +23,46 @@
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="p_flightSchedule.jsp">Flight Schedule &amp; Online Booking</a></li>
+				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
 				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>	
+				</li>
+				<li><a href="review.jsp">Reviews</a></li>	
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/mainbanner.jpg" width="800" height="400" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
-			<div id="sidebar">
-			
-			<a class="sideBTN" href="addAircraft.jsp">Add New Aircraft</a>
-			<a class="sideBTN" href="viewAircraftInfo.jsp">Aircraft Information</a>
-			<a class="sideBTN" href="addFSchedule.jsp">New Flight Schedule</a>
-			<a class="sideBTN" href="viewFInfo.jsp">Flight Information</a>
-			<a class="sideBTN" href="logout.jsp">Logout</a>
+			<div id="sidebar"><br/>
+				<div class="sidenav1">
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+		            <ul class="list1"> <br/>
+		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
+		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
+		            </ul>
+	        	</div>
+	        	
+	        	<div class="sidenav2">
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+		            <ul class="list2"> <br/>
+		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
+		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
+		            </ul>
+	        	</div>
+	        	
+	        	<div class="sidenav3">
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+		            <ul class="list3"> <br/>
+		            	<li><a href="changePasswd.jsp">Change password</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
+		            </ul>
+	        	</div>
 			</div>
-			
 			
 			<div id="maincon">
 				<h1>View Flight Information</h1><br/>				
@@ -52,14 +70,12 @@
 				<fieldset>
 					<label> Flight Schedule:
 					<select  name="viewYYYY">
-				        <option value="null" selected>Year</option>
-				        <option value="2014">2014</option>
+				        <option value="2014" selected>2014</option>
 				        <option value="2013">2013</option>
 				        <option value="2012">2012</option>
 				    </select>
 					<select  name="viewMM">
-				        <option value="null" selected>Month</option>
-				        <option value="1">Jan</option>
+				        <option value="1" selected>Jan</option>
 				        <option value="2">Feb</option>
 				        <option value="3">Mar</option>
 				        <option value="4">Apr</option>

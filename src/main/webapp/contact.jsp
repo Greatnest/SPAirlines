@@ -10,6 +10,11 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -32,12 +37,12 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Please login to manage your online booking.</p> <br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
 				<input type="text" class="inputLogin" name="userid"/>
@@ -66,11 +71,11 @@
 				
 				<fieldset>
 					<label>Name:
-					<input type="text" name="fedname" required/>
+					<input type="text" name="fedname"/>
 					</label><br/><br/>
 					
 					<label>Email:
-					<input type="text" name="fedEmailinput" required />
+					<input type="text" name="fedEmailinput"/>
 					</label><br/><br/>
 
 					<label>Contact Number:
@@ -78,12 +83,12 @@
 					</label><br/><br/><br/>
 					
 					<label>Enquiry:
-					<textarea name="fedfeedback" rows="4" cols="87" required></textarea>
+					<textarea name="fedfeedback" rows="4" cols="87"></textarea>
 					</label><br/><br/><br/>
 				</fieldset>
 				
 				<fieldset>					
-				<input type="submit" class="submit" value="Submit" />
+				<input type="submit" class="reset" value="Submit" />
 				<input type="reset" class="submit" value="Reset"/>
 				</fieldset>
 				

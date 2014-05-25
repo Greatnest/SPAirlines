@@ -11,11 +11,6 @@
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-<style>
-span
-{font-weight:bold;}
-</style>	
-	
 </head>
 <body>
 <div id="wrapper">
@@ -27,18 +22,20 @@ span
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="p_flightSchedule.jsp">Flight Schedule &amp; Online Booking</a></li>
+				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
 				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>	
+				</li>
+				<li><a href="review.jsp">Reviews</a></li>	
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900px" height="450px" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
+		
 		
 		<div id="content">
 			<div id="sidebar">
@@ -60,9 +57,9 @@ span
 			
 			<div id="maincon">
 				<h1>Our Aircraft</h1>
-				<p class="para">We have a fleet of aircrafts comprising of different sizes! This is to ensure that we are able
+				<p class="para">We have a fleet of aircrafts comprising different sizes. This is to ensure that we are able
 				to accommodate everyone's needs!<br/><br/>
-				The <span>Aircraft JL 850-200</span> is our largest aircraft being able to fit 600 passengers! It is our 
+				The <span>Aircraft JL 850-200</span> is our largest aircraft being able to fit 600 passengers. It is our 
 				newest aircraft that we have gotten and is made up of the best materials possible in order to ensure your
 				safety during the flight.<br/><br/> Our <span>Aircraft JL 777-200</span> has been with us since 2005. It has
 				received many great reviews over the years and has always been improving as well!<br/><br/>

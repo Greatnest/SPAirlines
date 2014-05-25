@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,12 +33,12 @@
 		</ul>
 		
 		<div id="bannerbox">
-			
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar">
-			<br/>Please login to manage your online booking. <br/><br/>
+			<br/><p class="loginword">Please login to manage your online booking.</p> <br/><br/>
 			<form action="getAdminData.jsp" method="post">
 				<label>User ID: 
 				<input type="text" class="inputLogin" name="userid"/>
@@ -49,14 +49,13 @@
 				</label><br/>
 				
 				<input type="submit" class="submitLong" value="Login"/>
-				<a href="forgetPassword.jsp">Forgot your password?</a>
-				</form>
+			</form>
 			
 			</div>
 			
 			
 			<div id="maincon">
-				<h1>Nil</h1>
+				<h1>Welcome</h1>
 				<p class="para">
 					
 				<br /><br />

@@ -33,13 +33,13 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>00" height="450" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
 			<div id="sidebar"><br/>
 				<div class="sidenav1">
-	        	<p class="sidenavTitle1"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
+	        	<p class="sidenavTitle1"> <img class="arrow1" src="icons/arrow-expandedrotated.png" alt="arrow" />  Aircraft</p>
 		            <ul class="list1"> <br/>
 		            	<li><a href="addAircraft.jsp">Add New Aircraft</a></li>
 		                <li><a href="viewAircraftInfo.jsp">View Aircraft Info</a></li>
@@ -47,7 +47,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav2">
-	        	<p class="sidenavTitle2"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
+	        	<p class="sidenavTitle2"> <img class="arrow2" src="icons/arrow-expandedrotated.png" alt="arrow" />  Flight Schedule</p>
 		            <ul class="list2"> <br/>
 		                <li><a href="addFSchedule.jsp">New Flight Schedule</a></li>
 		                <li><a href="viewFInfo.jsp">View Flight Info</a></li>
@@ -55,7 +55,7 @@
 	        	</div>
 	        	
 	        	<div class="sidenav3">
-	        	<p class="sidenavTitle3"> <img class="arrow" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
+	        	<p class="sidenavTitle3"> <img class="arrow3" src="icons/arrow-expandedrotated.png" alt="arrow" />  Admin</p>
 		            <ul class="list3"> <br/>
 		            	<li><a href="changePasswd.jsp">Change password</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
@@ -75,22 +75,19 @@
 	String economy=request.getParameter("economy");
 	String business=request.getParameter("business");
 	String firstclass=request.getParameter("first");
-	String dateofFlight=request.getParameter("date");
-	String timeofFlight=request.getParameter("departTime");
-	String arrival=request.getParameter("arriveTime");
+	String dateDepart=request.getParameter("dateDepart");
+	String departTime=request.getParameter("departTime");
+	String dateArrive=request.getParameter("dateArrive");
+	String arriveTime=request.getParameter("arriveTime");
 	String duration=request.getParameter("duration");
 	String interconnect=request.getParameter("interconnect");
+	String layover=request.getParameter("layover");
 	
 	try {
-	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
-    Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);
-			String sqlStr="Insert into flightschedule(flightScheduleID,aircraftID,originAirport,destinationAirport,country, economyCost,businessClassCost,firstClassCost,dateOfFlight, duration, timeOfFlight, arrivalTime, interconnect) Values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		    Class.forName("com.mysql.jdbc.Driver");
+		    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+		     Connection conn=DriverManager.getConnection(connURL); 
+			String sqlStr="Insert into flightschedule(flightScheduleID,aircraftID,originAirport,destinationAirport,country, economyCost,businessClassCost,firstClassCost,dateOfDepart, duration, departTime, arrivalTime, interconnect, dateOfArrival, layoverTime) Values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				
 				
 			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
@@ -102,11 +99,13 @@
 			pstmt.setString(6,economy);
 			pstmt.setString(7,business);
 			pstmt.setString(8,firstclass);
-			pstmt.setString(9,dateofFlight);
+			pstmt.setString(9,dateDepart);
 			pstmt.setString(10,duration);
-			pstmt.setString(11,timeofFlight);
-			pstmt.setString(12,arrival);
+			pstmt.setString(11,departTime);
+			pstmt.setString(12,arriveTime);
 			pstmt.setString(13, interconnect);
+			pstmt.setString(14, dateArrive);
+			pstmt.setString(15, layover);
 			
 			int rec=pstmt.executeUpdate();
 			
@@ -121,8 +120,9 @@
 				Unfortunately, the database is not successfully updated. Please check your input.
 				</p>
 				
-				
 <%				}
+			
+		conn.close();
 			
 	}catch(Exception e){
 		
