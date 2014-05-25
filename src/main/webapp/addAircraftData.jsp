@@ -15,7 +15,7 @@ String flightnumber=request.getParameter("craftFNo");
 String capacity=request.getParameter("flightCapacity");
 try {
 
-    	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
