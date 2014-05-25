@@ -188,7 +188,7 @@
 			            <option value="9">Sep</option>
 			            <option value="10">Oct</option>
 			            <option value="11">Nov</option>
-			            <option value="12">De</option>
+			            <option value="12">Dec</option>
 			        </select>
 					<select  name="returnDD">
 						<option value="null" selected>Day</option>
@@ -228,7 +228,7 @@
 		        </fieldset>
 		        
 		        <fieldset>
-				<input type="submit" class="submit" value="submit">
+				<input type="submit" class="submit" value="Submit">
 				</fieldset>
 			
 			</form>

@@ -95,7 +95,7 @@ try {
 	if(isInterconnect .equals("No")){
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -153,7 +153,7 @@ try {
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "
@@ -228,14 +228,15 @@ try {
 <%
 
 try {
-    // Step1: Load JDBC Driver
+   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	
     Class.forName("com.mysql.jdbc.Driver");
-    // Step 2: Define Connection URL
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
-    // Step 3: Establish connection to URL
+    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
-    // Step 4: Create Statement object
-    //Statement stmt=conn.createStatement();
+
 
     String sqlStr0="Select * from interconnecting where originAirport = ? and destinationAirport = ?";
 	PreparedStatement pstmt0=conn.prepareStatement(sqlStr0);
@@ -251,7 +252,7 @@ try {
 
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -308,7 +309,7 @@ try {
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "

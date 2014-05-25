@@ -57,7 +57,7 @@
 			<div id="maincon">
 				<h1>Welcome</h1>
 				<p class="para">
-					
+				Here are some great deals when you travel with us! 
 				<br /><br />
 				</p>
 			
