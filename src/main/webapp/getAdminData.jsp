@@ -18,15 +18,16 @@
 
 <%
 	try {
-		// Step1: Load JDBC Driver
-		Class.forName("com.mysql.jdbc.Driver");
-		// Step 2: Define Connection URL
-		String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
-		// Step 3: Establish connection to URL
-		Connection conn=DriverManager.getConnection(connURL); 
-		// Step 4: Create Statement object
-		Statement stmt=conn.createStatement();
-		// Step 5: Execute SQL Command
+	 String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	
+    Class.forName("com.mysql.jdbc.Driver");
+    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    Connection conn=DriverManager.getConnection(connURL);
+	
+	
 		String sqlStr = "SELECT * FROM admin where userid= ? and password= ?";
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 		pstmt.setString(1, username);
