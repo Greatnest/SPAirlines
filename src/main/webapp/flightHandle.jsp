@@ -108,7 +108,7 @@ if (request.getParameter("edit") != null) {
 		String dateArrive=rs.getString("dateOfArrival");
 		String interconnect=rs.getString("interconnect");
 		String layover=rs.getString("layoverTime");
-		String ocountry=rs.getString("originCountry");
+		String originCountry=rs.getString("originCountry");
 	
 		
 %>	<form action= updateFlight.jsp id="form2" method="post">
