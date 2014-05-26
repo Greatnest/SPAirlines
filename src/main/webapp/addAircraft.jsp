@@ -87,7 +87,7 @@
 					</label><br/></br>
 					
 					<label>Plane Seat Layout:
-					<input type="text" name="image" value="planes/default.jpg">
+					<input type="text" name="image">
 					</label><br/></br></br>
 					
 				</fieldset>
