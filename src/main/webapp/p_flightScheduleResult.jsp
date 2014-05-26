@@ -94,7 +94,7 @@ try {
 	if(isInterconnect .equals("No")){
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -152,7 +152,7 @@ try {
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "
@@ -230,7 +230,7 @@ try {
     // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
     // Step 2: Define Connection URL
-    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    String connURL="jdbc:mysql://localhost/spairlines?user=root&password=root"; 
     // Step 3: Establish connection to URL
     Connection conn=DriverManager.getConnection(connURL);
     // Step 4: Create Statement object
@@ -250,7 +250,7 @@ try {
 
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -307,7 +307,7 @@ try {
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "

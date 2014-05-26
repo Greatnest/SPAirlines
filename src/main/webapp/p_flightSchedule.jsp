@@ -96,8 +96,9 @@
 			        
 <%					while(rs2.next()){
 			 		String destination=rs2.getString("destinationAirport");
+					String country=rs2.getString("country");
 %>				        
-						<option value="<%=destination %>"><%=destination %></option>
+						<option value="<%=destination %>"><%=destination %>,<%=country%></option>
 <% } %>
 			        </select>
 			        </label><br/><br/>
@@ -130,7 +131,7 @@
 			            <option value="9">Sep</option>
 			            <option value="10">Oct</option>
 			            <option value="11">Nov</option>
-			            <option value="12">De</option>
+			            <option value="12">Dec</option>
 			        </select>
 					<select  name="departureDD">
 						<option value="null" selected>Day</option>
@@ -188,7 +189,7 @@
 			            <option value="9">Sep</option>
 			            <option value="10">Oct</option>
 			            <option value="11">Nov</option>
-			            <option value="12">De</option>
+			            <option value="12">Dec</option>
 			        </select>
 					<select  name="returnDD">
 						<option value="null" selected>Day</option>
