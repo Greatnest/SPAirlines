@@ -150,7 +150,7 @@ try {
 		
 		
 		}
-		else if(interconnect.equals(Yes)){
+		else{
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
@@ -215,9 +215,7 @@ try {
 	    
 <%		}
 			}
-			else {
-			out.println("There are no flights scheduled for the dates selected, please select other dates");
-			
+		
 			}
 	}
 		
@@ -310,9 +308,7 @@ try {
 <%  } 
 		
 		
-		}
-		
-		else if(interconnect.equals("Yes")){
+		}else{
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
@@ -376,8 +372,7 @@ try {
 	    
 	    
 <%		}
-			}else 
-			out.println("There are no flights scheduled for the dates selected, please select other dates");
+			}
 	}	
 		
 	conn.close();
