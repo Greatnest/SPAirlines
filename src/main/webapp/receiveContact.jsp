@@ -60,14 +60,15 @@
 
 <%	
 try {
-   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
+    // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    // Step 2: Define Connection URL
+    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    // Step 3: Establish connection to URL
     Connection conn=DriverManager.getConnection(connURL);
+    // Step 4: Create Statement object
+    Statement stmt=conn.createStatement();
+
 
 	String name=request.getParameter("fedname");
 	String email=request.getParameter("fedEmailinput");

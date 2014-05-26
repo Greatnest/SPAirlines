@@ -89,7 +89,7 @@
 				
 				<fieldset>					
 				<input type="submit" class="reset" value="Submit" />
-				<input type="reset" class="submitLong" value="Reset"/>
+				<input type="reset" class="submit" value="Reset"/>
 				</fieldset>
 				
 				

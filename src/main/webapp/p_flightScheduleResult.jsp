@@ -74,14 +74,14 @@ String Dday=request.getParameter("departureDD");
 
 
 try {
-    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
+    // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    // Step 2: Define Connection URL
+    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    // Step 3: Establish connection to URL
     Connection conn=DriverManager.getConnection(connURL);
+    // Step 4: Create Statement object
+    //Statement stmt=conn.createStatement();
 
 	String sqlStr0="Select * from interconnecting where originAirport = ? and destinationAirport = ?";
 	PreparedStatement pstmt0=conn.prepareStatement(sqlStr0);
@@ -92,10 +92,10 @@ try {
 		String isInterconnect = rs0.getString("interconnecting");
 		String layoverAirport = rs0.getString("LayoverAirport");
 
-	if(isInterconnect.equals("No")){
+	if(isInterconnect .equals("No")){
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -149,12 +149,11 @@ try {
 <%  } 
 		
 		
-		}
-		else{
+		}else{
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "
@@ -185,7 +184,7 @@ try {
 			String dateOfArrival=rs3.getString("dateOfArrival");
 			String desAirport=rs3.getString("destinationAirport");
 			String oriAirport=rs3.getString("originAirport");
-			String layover=rs3.getString("overlayTime");
+			String layover=rs3.getString("layoverTime");
 				
 			
 %>			<!-- Collapsible table starts here! -->
@@ -215,8 +214,6 @@ try {
 	    
 <%		}
 			}
-		
-			}
 	}
 		
 	conn.close();
@@ -231,15 +228,14 @@ try {
 <%
 
 try {
-	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
+    // Step1: Load JDBC Driver
     Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
+    // Step 2: Define Connection URL
+    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+    // Step 3: Establish connection to URL
     Connection conn=DriverManager.getConnection(connURL);
-
+    // Step 4: Create Statement object
+    //Statement stmt=conn.createStatement();
 
     String sqlStr0="Select * from interconnecting where originAirport = ? and destinationAirport = ?";
 	PreparedStatement pstmt0=conn.prepareStatement(sqlStr0);
@@ -251,11 +247,11 @@ try {
 		String isInterconnect = rs0.getString("interconnecting");
 		String layoverAirport = rs0.getString("LayoverAirport");
 
-	if(isInterconnect.equals("No")){
+	if(isInterconnect .equals("No")){
 
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE f.originAirport = ? AND f.destinationAirport = ? "
 			+ "AND year(f.dateOfDepart) = ? AND month(f.dateOfDepart) = ? "
 			+ "AND day(f.dateOfDepart) = ?";
@@ -312,7 +308,7 @@ try {
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
-			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
+			+ "FROM assignment.aircraft a inner join assignment.flightschedule f ON a.aircraftID = f.aircraftID "
 			+ "WHERE interconnect in "
 			+ "(Select interconnect from flightschedule "
 			+ "WHERE originAirport = ? AND destinationAirport = ? "
@@ -343,7 +339,7 @@ try {
 			String dateOfArrival=rs3.getString("dateOfArrival");
 			String desAirport=rs3.getString("destinationAirport");
 			String oriAirport=rs3.getString("originAirport");
-			String layover=rs3.getString("overlayTime");
+			String layover=rs3.getString("layoverTime");
 				
 			
 %>			<!-- Collapsible table starts here! -->

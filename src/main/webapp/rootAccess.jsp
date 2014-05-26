@@ -6,12 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SP Airlines</title>
-   <style type="text/css">
-    <%@include file="css/style.css" %></style>
+   <style type="text/css"><%@include file="css/style.css" %></style>
+       <style type="text/css"><%@include file="css/js-image-slider.css" %></style>
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/js-image-slider.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<script type="text/javascript" src="js/Rotator.js"></script>
+	
+	<script type="text/javascript">
+    $(document).ready( function() {
+        $('#sidebar').height($('#content').height());
+    });
+	</script>
 </head>
 <body>
 <div id="wrapper">
@@ -66,11 +73,24 @@
 			
 			
 			<div id="maincon">
-				<h1>Welcome</h1>
-				<p class="para">
-				Please look at the left side bar for access to your admin privileges
+				<h1>Welcome</h1><br /><br />
+				
+				<div id="sliderFrame">
+        		<div id="slider">
+                <img src="img/MtFuji.jpg" alt="Mt Fuji, Japan"/>
+            	<img src="img/Taitung.jpg" alt="Taitung Resort, Taiwan" />
+           		 <img src="img/legoland.jpg" alt="Legoland, Malaysia" />
+            	<img src="img/Australia.jpg" alt="Australia" />
+            	<img src="img/Beijing.jpg" alt="Beijing, China" />
+        		</div>
+   				</div><br /><br /><br />
+   				
+   			<p class="para3"><span class="bold2">Flight Updates:</span></p>
+				<p class="para3"><span class="bold2">28/5 09:00</span> Flight No. 147 JL 850-200 to Hong Kong has been delayed for 2 hours 
+				due to thunderstorm.
+				<p class="para3"><span class="bold2">27/5 06:00</span> Flight No. 147 JL 777-200 to Taiwan has successfully taken off.
+				<br /><br />
 				</p>
-			
 			</div>
 			
 		

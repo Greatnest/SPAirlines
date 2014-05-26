@@ -59,17 +59,17 @@
 				<form action="p_flightScheduleResult.jsp" id="form3" method="post">
 <%
 		try {
-   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
-    Class.forName("com.mysql.jdbc.Driver");
-    String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);
+		    // Step1: Load JDBC Driver
+		    Class.forName("com.mysql.jdbc.Driver");
+		    // Step 2: Define Connection URL
+		    String connURL="jdbc:mysql://localhost/assignment?user=root&password=root"; 
+		    // Step 3: Establish connection to URL
+		    Connection conn=DriverManager.getConnection(connURL);
+		    // Step 4: Create Statement object
+		    Statement stmt=conn.createStatement();
 		   
 		    String sqlStr="select distinct originAirport from flightschedule";
-		    String sqlStr2="select distinct destinationAirport,country from flightschedule";
+		    String sqlStr2="select distinct destinationAirport from flightschedule";
 		    PreparedStatement pstmt = conn.prepareStatement(sqlStr);	
 		    PreparedStatement pstmt2 = conn.prepareStatement(sqlStr2);	
 		    ResultSet rs = pstmt.executeQuery();
@@ -96,9 +96,8 @@
 			        
 <%					while(rs2.next()){
 			 		String destination=rs2.getString("destinationAirport");
-					String country=rs2.getString("country");
-%>				      
-						<option value="<%=destination %>"><%=destination %>,<%=country%></option>
+%>				        
+						<option value="<%=destination %>"><%=destination %></option>
 <% } %>
 			        </select>
 			        </label><br/><br/>
@@ -189,7 +188,7 @@
 			            <option value="9">Sep</option>
 			            <option value="10">Oct</option>
 			            <option value="11">Nov</option>
-			            <option value="12">Dec</option>
+			            <option value="12">De</option>
 			        </select>
 					<select  name="returnDD">
 						<option value="null" selected>Day</option>
@@ -229,7 +228,7 @@
 		        </fieldset>
 		        
 		        <fieldset>
-				<input type="submit" class="submit" value="Submit">
+				<input type="submit" class="submit" value="submit">
 				</fieldset>
 			
 			</form>
