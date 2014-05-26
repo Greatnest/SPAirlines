@@ -59,7 +59,7 @@
 				<form action="p_flightScheduleResult.jsp" id="form3" method="post">
 <%
 		try {
-		      String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
@@ -69,7 +69,7 @@
     Connection conn=DriverManager.getConnection(connURL);
 		   
 		    String sqlStr="select distinct originAirport from flightschedule";
-		    String sqlStr2="select distinct destinationAirport from flightschedule";
+		    String sqlStr2="select distinct destinationAirport,country from flightschedule";
 		    PreparedStatement pstmt = conn.prepareStatement(sqlStr);	
 		    PreparedStatement pstmt2 = conn.prepareStatement(sqlStr2);	
 		    ResultSet rs = pstmt.executeQuery();

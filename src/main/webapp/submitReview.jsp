@@ -70,11 +70,11 @@
 					</label><br/><br/>
 					
 					<label>Name:
-					<input type="text" name="name"/>
+					<input type="text" name="name" required />
 					</label><br/><br/>
 					
 					<label>Email:
-					<input type="text" name="email"/>
+					<input type="text" name="email" required />
 					</label><br/><br/>
 
 					<label>Rating:
