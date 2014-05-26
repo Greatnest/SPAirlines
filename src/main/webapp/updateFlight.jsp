@@ -82,6 +82,7 @@
 	String interconnect=request.getParameter("interconnect");
 	String layover=request.getParameter("overlay");
 	String dateArrive=request.getParameter("dateArrive");
+	String ocountry=request.getParameter("origincountry");
 	
 	try {
 	      String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
@@ -94,8 +95,7 @@
     Connection conn=DriverManager.getConnection(connURL);
 
  
-		String sqlStr="UPDATE flightschedule SET aircraftID = ?, originAirport = ?, destinationAirport = ?, country = ?, economyCost = ?,businessClassCost = ?, firstClassCost = ?, dateOfDepart = ?, duration = ?, departTime = ?, arrivalTime = ?, interconnect = ?, layoverTime = ?, dateOfArrival = ?" 
-						+" WHERE flightScheduleID = "+FSID+"";
+		String sqlStr="UPDATE flightschedule SET aircraftID = ?, originAirport = ?, destinationAirport = ?, country = ?, economyCost = ?,businessClassCost = ?, firstClassCost = ?, dateOfDepart = ?, duration = ?, departTime = ?, arrivalTime = ?, interconnect = ?, layoverTime = ?, dateOfArrival = ?, originCountry=?" " WHERE flightScheduleID = ?";
 			
 			
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
@@ -113,7 +113,8 @@
 		pstmt.setString(12,interconnect);
 		pstmt.setString(13,layover);
 		pstmt.setString(14,dateArrive);
-				
+		pstmt.setString(15,ocountry);	
+		pstmt.setString(16,FSID);
 		int rec=pstmt.executeUpdate();
 		
 		

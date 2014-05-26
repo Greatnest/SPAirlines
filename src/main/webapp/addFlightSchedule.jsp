@@ -33,7 +33,7 @@
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>00" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
@@ -82,6 +82,7 @@
 	String duration=request.getParameter("duration");
 	String interconnect=request.getParameter("interconnect");
 	String layover=request.getParameter("layover");
+	String ocountry=request.getParameter("origincountry");
 	
 	try {
 		   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
@@ -92,7 +93,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
-			String sqlStr="Insert into flightschedule(flightScheduleID,aircraftID,originAirport,destinationAirport,country, economyCost,businessClassCost,firstClassCost,dateOfDepart, duration, departTime, arrivalTime, interconnect, dateOfArrival, layoverTime) Values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sqlStr="Insert into flightschedule(flightScheduleID,aircraftID,originAirport,destinationAirport,country, economyCost,businessClassCost,firstClassCost,dateOfDepart, duration, departTime, arrivalTime, interconnect, dateOfArrival, layoverTime,originCountry) Values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				
 				
 			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
@@ -111,6 +112,7 @@
 			pstmt.setString(13, interconnect);
 			pstmt.setString(14, dateArrive);
 			pstmt.setString(15, layover);
+			pstmt.setString(16,ocountry);
 			
 			int rec=pstmt.executeUpdate();
 			

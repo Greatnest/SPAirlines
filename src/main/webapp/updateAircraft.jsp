@@ -94,7 +94,7 @@
 		pstmt.setString(2, model);
 		pstmt.setInt(3,capacity);
 		pstmt.setString(4, image);
-		pstmt.setString(5, aircraftID):
+		pstmt.setInt(5, aircraftID);
 		int rec=pstmt.executeUpdate();
 		
 		
