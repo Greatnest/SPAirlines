@@ -71,8 +71,7 @@
 					<label> Flight Schedule:
 					<select  name="viewYYYY">
 				        <option value="2014" selected>2014</option>
-				        <option value="2013">2013</option>
-				        <option value="2012">2012</option>
+						 <option value="2015">2015</option>
 				    </select>
 					<select  name="viewMM">
 				        <option value="1" selected>Jan</option>

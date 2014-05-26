@@ -76,7 +76,7 @@
 				<div id="datatable">
 
 <%try {
-   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+         String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
@@ -84,6 +84,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
+
 	String year=request.getParameter("viewYYYY");
 	String month=request.getParameter("viewMM");
 	
@@ -93,9 +94,11 @@
 	pstmt.setString(2, month);
 	ResultSet rs = pstmt.executeQuery();
 	
+	boolean resultYes = false;
 	%> <form action="flightHandle.jsp" method="post"><%
 			
  	while(rs.next()){ //retrieve each table result one by one
+ 		resultYes = true;
  		int FSID=Integer.parseInt(rs.getString("flightScheduleID"));
  		int aircraftID=Integer.parseInt(rs.getString("aircraftID"));
  		String country=rs.getString("country");
@@ -137,21 +140,36 @@
  		</td>
  		</tr>
  	</table></br>
- 	<% } %>
- 	
+ 	<% } 
 		
-
+		if(!resultYes){
+%>			</form>
+			<p class = "para">Sorry, there is no flight schedule for this month.</p>
+			
 			<fieldset>
+				<a href="viewFInfo.jsp"><input type="button" name="back" class="submit" value="Back"></a>
+			</fieldset>
+			
+			
+	<%} else {
+%>			<fieldset>
 				<input type="submit" name="delete" class="submit" value="Delete">
 			</fieldset>
 		</form>
+<%	}
+ 	
+
+ %>	
+		
+
+			
 <%
 
 	conn.close();
 
 }catch(Exception e){
 	
-	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
+	out.println(e);
 } %>
 
 			</div>
