@@ -75,7 +75,7 @@ try {
 	    
     String email=request.getParameter("email");
     
-  String sqlStr="SELECT ID FROM admin WHERE Email=?";
+  String sqlStr="SELECT userid FROM admin WHERE email=?";
    PreparedStatement pstmt=conn.prepareStatement(sqlStr);
    pstmt.setString(1,email);
 	ResultSet rs=pstmt.executeQuery();
