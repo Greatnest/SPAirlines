@@ -81,7 +81,7 @@ try {
 	ResultSet rs=pstmt.executeQuery();
     int userID=0;
    if(rs.next()) {
-	userID=rs.getInt("ID");   
+	userID=rs.getInt("userid");   
    }
    else{
 	   out.println("Error");
