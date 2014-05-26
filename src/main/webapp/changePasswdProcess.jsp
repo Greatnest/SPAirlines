@@ -115,7 +115,7 @@
         }
         catch (NoSuchAlgorithmException e)
         {
-            out.println("An error has occured please try again")
+            out.println("An error has occured please try again");
         }
 	
 	
