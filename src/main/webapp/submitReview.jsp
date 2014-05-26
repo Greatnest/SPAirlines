@@ -82,7 +82,7 @@
 					</label><br/><br/><br/>
 					
 					<label>Review
-					<textarea name="review" rows="15" cols="87"></textarea>
+					<textarea name="review" rows="15" cols="87" required="requried"></textarea>
 					</label><br/><br/><br/>
 				</fieldset>
 				

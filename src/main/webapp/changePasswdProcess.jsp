@@ -73,16 +73,54 @@
 	String oldpasswd=request.getParameter("oldpasswd");
 	String newpasswd=request.getParameter("newpasswd");
 	String confnewpasswd=request.getParameter("confnewpasswd");
-	
+	String oldPassword = null;
+	String newPassword = null;
 	try {
-	    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
+	
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(oldpasswd.getBytes());
+            byte[] bytes = md.digest()
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+           oldPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            out.println("An error has occured please try again")
+        }	
+	
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(newpasswd.getBytes());
+            byte[] bytes = md.digest()
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            newPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            out.println("An error has occured please try again")
+        }
+	
+	
+	
+	
+	
 	    String sqlStr="Select * from admin where userid = ? ";
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 		pstmt.setString(1, userid);
@@ -91,14 +129,14 @@
 		
 		String sqlStr2="UPDATE admin SET password = ? WHERE userid = ?";
 		PreparedStatement pstmt2=conn.prepareStatement(sqlStr2);
-		pstmt2.setString(1, newpasswd);
+		pstmt2.setString(1, newPassword);
 		pstmt2.setString(2, userid);
 		int rec=0;
 		
 		   if(rs.next()){
 			   String passwd=rs.getString("password");
 			   
-			   if(oldpasswd.equals(passwd) && newpasswd .equals(confnewpasswd)){
+			   if(oldPassword.equals(passwd) && newpasswd .equals(confnewpasswd)){
 					rec=pstmt2.executeUpdate();
 				
 			    }
