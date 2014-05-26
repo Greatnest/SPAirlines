@@ -71,7 +71,7 @@ try {
 	
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);
+    Connection conn=DriverManager.getConnection(connURL);	
 
 String ID=request.getParameter("ID");
 String password=request.getParameter("password");
