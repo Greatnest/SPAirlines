@@ -107,7 +107,7 @@
 <%		conn.close();
 
 		}catch(Exception e){
-			out.println(e);
+		out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 		}
 %>			        
 			        
@@ -229,7 +229,7 @@
 		        </fieldset>
 		        
 		        <fieldset>
-				<input type="submit" class="submit" value="submit">
+				<input type="submit" class="submitLong" value="Submit">
 				</fieldset>
 			
 			</form>

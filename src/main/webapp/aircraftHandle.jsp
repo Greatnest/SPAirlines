@@ -136,8 +136,7 @@ if (request.getParameter("edit") != null) {
 conn.close();
 
 }catch(Exception e){
-	
-	out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 }
 }
 
@@ -179,7 +178,7 @@ try {
 	
 }catch(Exception e){
 	
-	out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 }
 }
 

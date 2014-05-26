@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.security.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +12,7 @@
 <%
 	String username=request.getParameter("userid");
 	String password=request.getParameter("password");
-	String generatedPassword=null;
+
 
 %>
 
@@ -47,7 +47,7 @@
 
 	catch(Exception e){
 
-		out.println(e); // try to print a general error
+		out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 	}
 %>
 

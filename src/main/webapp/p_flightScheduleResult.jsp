@@ -218,7 +218,7 @@ try {
 	conn.close();
 }catch(Exception e){
 	
-	out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 } 
 
 %>
@@ -373,7 +373,7 @@ try {
 	conn.close();
 }catch(Exception e){
 	
-	out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 } 
 
 

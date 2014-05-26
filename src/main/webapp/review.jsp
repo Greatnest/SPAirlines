@@ -62,7 +62,7 @@
 			<div id="maincon">
 				<h1>Reviews</h1>
 				<p class="para"> Thank you very much for travelling with SP Airlines. Do feel free to drop us a review
-				about your experiences with us. Click <a href="submitReview.jsp">here</a> to submit a review.	
+				about your experiences with us. Click <span class="bold2"><a href="submitReview.jsp">here</a></span> to submit a review.	
 				<br />
 				</p>
 				<div id="datatable">
@@ -103,7 +103,7 @@ try {
 					
 }catch(Exception e){
 	
-	out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
 } %>
 			
 			</div>
