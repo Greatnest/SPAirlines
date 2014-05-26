@@ -74,7 +74,7 @@ String Dday=request.getParameter("departureDD");
 
 
 try {
-   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
@@ -149,7 +149,8 @@ try {
 <%  } 
 		
 		
-		}else{
+		}
+		else if(interconnect.equals(Yes)){
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
@@ -214,6 +215,10 @@ try {
 	    
 <%		}
 			}
+			else {
+			out.println("There are no flights scheduled for the dates selected, please select other dates");
+			
+			}
 	}
 		
 	conn.close();
@@ -228,7 +233,7 @@ try {
 <%
 
 try {
-   String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
@@ -248,7 +253,7 @@ try {
 		String isInterconnect = rs0.getString("interconnecting");
 		String layoverAirport = rs0.getString("LayoverAirport");
 
-	if(isInterconnect .equals("No")){
+	if(isInterconnect.equals("No")){
 
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
@@ -305,7 +310,9 @@ try {
 <%  } 
 		
 		
-		}else{
+		}
+		
+		else if(interconnect.equals("Yes")){
 		
 		
 	String sqlStr2= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
@@ -369,7 +376,8 @@ try {
 	    
 	    
 <%		}
-			}
+			}else 
+			out.println("There are no flights scheduled for the dates selected, please select other dates");
 	}	
 		
 	conn.close();
