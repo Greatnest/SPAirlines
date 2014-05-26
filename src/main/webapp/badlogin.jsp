@@ -70,7 +70,7 @@
             	<img src="img/Taitung.jpg" alt="Taitung Resort, Taiwan" />
            		 <img src="img/legoland.jpg" alt="Legoland, Malaysia" />
             	<img src="img/Australia.jpg" alt="Australia" />
-            	<img src="img/Beijing.jpg" alt="Beijing, China" />
+            	<img src="img/Italy.jpg" alt="Italy" />
         		</div>
    				</div><br /><br /><br />
    				
