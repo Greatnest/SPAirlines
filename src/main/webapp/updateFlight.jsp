@@ -80,7 +80,7 @@
 	String duration=request.getParameter("duration");
 	String arriveTime=request.getParameter("arriveTime");
 	String interconnect=request.getParameter("interconnect");
-	String layover=request.getParameter("layover");
+	String layover=request.getParameter("overlay");
 	String dateArrive=request.getParameter("dateArrive");
 	
 	try {

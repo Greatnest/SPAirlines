@@ -99,13 +99,13 @@
         }
         catch (NoSuchAlgorithmException e)
         {
-            out.println("An error has occured please try again")
+            out.println("An error has occured please try again");
         }	
 	
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(newpasswd.getBytes());
-            byte[] bytes = md.digest()
+            byte[] bytes = md.digest();
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++)
             {

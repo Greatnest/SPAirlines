@@ -87,14 +87,14 @@
 
  
 		String sqlStr="UPDATE aircraft SET flightNo = ?, model = ?, capacity = ?, imagepath = ?"
-						+" WHERE aircraftID = "+aircraftID+"";
+						+" WHERE aircraftID = ?";
 			
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 		pstmt.setInt(1,flightNo);
 		pstmt.setString(2, model);
 		pstmt.setInt(3,capacity);
 		pstmt.setString(4, image);
-		
+		pstmt.setString(5, aircraftID):
 		int rec=pstmt.executeUpdate();
 		
 		

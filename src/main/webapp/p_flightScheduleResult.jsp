@@ -91,7 +91,7 @@ try {
 		String isInterconnect = rs0.getString("interconnecting");
 		String layoverAirport = rs0.getString("LayoverAirport");
 
-	if(isInterconnect .equals("No")){
+	if(isInterconnect.equals("No")){
 		
 	String sqlStr= "SELECT f.*, a.imagepath, a.model, a.flightNo, a.capacity "
 			+ "FROM spairlines.aircraft a inner join spairlines.flightschedule f ON a.aircraftID = f.aircraftID "
