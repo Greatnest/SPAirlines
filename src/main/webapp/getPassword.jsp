@@ -75,13 +75,13 @@ try {
 	    
     String email=request.getParameter("email");
     
-  String sqlStr="SELECT userid FROM admin WHERE email=?";
+  String sqlStr="SELECT ID FROM admin WHERE email=?";
    PreparedStatement pstmt=conn.prepareStatement(sqlStr);
    pstmt.setString(1,email);
 	ResultSet rs=pstmt.executeQuery();
     int userID=0;
    if(rs.next()) {
-	userID=rs.getInt("userid");   
+	userID=rs.getInt("ID");   
    }
    else{
 	   out.println("Error");
