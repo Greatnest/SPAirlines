@@ -96,7 +96,7 @@
 			        
 <%					while(rs2.next()){
 			 		String destination=rs2.getString("destinationAirport");
-					String country=rs2.getString("country");
+					String country = rs2.getString("country");
 %>				        
 						<option value="<%=destination %>"><%=destination %>,<%=country%></option>
 <% } %>
