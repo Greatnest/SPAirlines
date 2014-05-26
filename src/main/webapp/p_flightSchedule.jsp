@@ -68,7 +68,7 @@
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
 		   
-		    String sqlStr="select distinct originAirport from flightschedule";
+		    String sqlStr="select distinct originAirport,originCountry from flightschedule";
 		    String sqlStr2="select distinct destinationAirport,country from flightschedule";
 		    PreparedStatement pstmt = conn.prepareStatement(sqlStr);	
 		    PreparedStatement pstmt2 = conn.prepareStatement(sqlStr2);	
@@ -84,8 +84,9 @@
 					
 <%					while(rs.next()){
 			 		String origin=rs.getString("originAirport");
+					String originCountry=rs.getString("originCountry");
 %>				        
-						<option value="<%=origin %>"><%=origin %></option>
+						<option value="<%=origin %>"><%=origin %>,<%=originCountry%></option>
 <% } %>
 			        </select>
 					</label><br/><br/>

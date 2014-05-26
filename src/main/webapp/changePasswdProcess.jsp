@@ -89,7 +89,7 @@
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(oldpasswd.getBytes());
-            byte[] bytes = md.digest()
+            byte[] bytes = md.digest();
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++)
             {
