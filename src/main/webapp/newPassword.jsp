@@ -1,4 +1,17 @@
-<%@include file="header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SP Airlines</title>
+   <style type="text/css">
+    <%@include file="css/style.css" %></style>
+	<link rel="shortcut icon" href="icons/favicon.ico"/>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+</head>
 <body>
 <div id="wrapper">
 		<ul id = "coolMenu">
@@ -9,23 +22,18 @@
 						<li><a href="Airplanes.jsp">Airplanes</a></li>
 					</ul>
 				</li>
-				<li><a href="p_flightSchedule.jsp">Flight Schedule</a></li>
-				<li><a href="#">Plan & Book</a>
-					<ul class="noJS">
-						<li><a href="bathing.html">Bathing</a></li>
-						<li><a href="nutrition.html">Nutrition</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Enquiry</a>
+				<li><a href="p_flightSchedule.jsp">Online Booking</a></li>
+				<li><a href="#">Enquiries</a>
 					<ul class="noJS">
 						<li><a href="FAQ.jsp">FAQ</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 					</ul>
-				</li>	
+				</li>
+				<li><a href="review.jsp">Reviews</a></li>	
 		</ul>
 		
 		<div id="bannerbox">
-			<img src="banners-bg/banner.jpg" width="900" height="450" alt="Welcome"/>
+			<img src="banners-bg/banner.jpg" width="900" height="350" alt="Welcome"/>
 		</div>
 		
 		<div id="content">
@@ -62,7 +70,7 @@ Connection conn=DriverManager.getConnection(connURL);
 
 String ID=request.getParameter("ID");
 String password=request.getParameter("password");
-String sqlStr="UPDATE admin set Password=? where function" + "like ?";
+String sqlStr="UPDATE admin set Password=? where ID like ?";
 PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 pstmt.setString(1,password);
 pstmt.setString(2,ID);

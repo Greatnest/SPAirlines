@@ -57,7 +57,7 @@
 				
 				<input type="submit" class="submitLong" value="Login"/>
 			</form>
-			
+			<a href="forgetPassword.jsp" />Forgot your password?</a>
 			</div>
 			
 			
