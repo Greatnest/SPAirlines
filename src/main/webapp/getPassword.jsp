@@ -91,11 +91,8 @@ try {
    	resetlink.append(request.getScheme());
    	resetlink.append("://");
    	resetlink.append(request.getServerName());
-   	resetlink.append(":");
-   	resetlink.append(request.getServerPort()); 
    	resetlink.append("/");
    	resetlink.append(request.getContextPath());
-   	resetlink.append("/");
    	resetlink.append("newPassword.jsp");
    	resetlink.append("?ID=");
    	resetlink.append(userID);

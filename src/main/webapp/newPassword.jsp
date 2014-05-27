@@ -53,17 +53,7 @@
 			</div>
 			
 			<div id="maincon">
-			<h2>Type in your new password here:</h2>
-			<form action="newPassword.jsp" method="post">
-			<label>New Password:
-			<input type="password" name="password">
-			<input type="submit" value="Set Password" name="btnSubmit">
-			</label>
-			</form>
-			</div>
-	</div>
-<%
-try {
+<%try {
 	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
@@ -74,28 +64,25 @@ try {
     Connection conn=DriverManager.getConnection(connURL);
 
 String ID=request.getParameter("ID");
-String password=request.getParameter("password");
-String sqlStr="UPDATE admin set Password like ? where ID like ?";
-PreparedStatement pstmt=conn.prepareStatement(sqlStr);
-pstmt.setString(1,password);
-pstmt.setString(2,ID);
-int rec=pstmt.executeUpdate();
-if(rec==1)
-{
-	out.println("Your password has been reseted");
-}
-else {
-	out.println("An error has occured, please try again");
-}
-
 }catch(Exception e) 
 {
 out.println("Please contact the administrator");	
 }
-%>	
-	<label>
-	
-	</label>	
+%>
+			<h2>Type in your new password here:</h2>
+			<form action="resetPassword.jsp" method="post">
+			<label>New Password:
+			<input type="password" name="password">
+			<input type="submit" value="Set Password" name="btnSubmit">
+			<input type="hidden" name="ID" value="<%=ID%>">
+			</label>
+			</form>
+			</div>
+	</div>
+
+
+
+
 <%@include file="footer.jsp"%>
 </body>
 </html>
