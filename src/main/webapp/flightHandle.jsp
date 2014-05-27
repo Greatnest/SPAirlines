@@ -197,7 +197,7 @@ if (request.getParameter("edit") != null) {
 
 	}catch(Exception e){
 		
-	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
+	out.println(e);
 	}
 	}else {
 
@@ -240,8 +240,7 @@ if (request.getParameter("delete") != null) {
 		conn.close();
 	
 }catch(Exception e){
-	
-	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.");
+out.println(e);
 }
 }else {
 out.println("Please select a flight to delete");

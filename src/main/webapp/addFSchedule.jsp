@@ -104,19 +104,19 @@
 					</label><br/><br/>
 					
 					<label>Departure Date:
-					<input type="text" name="dateDepart" value="YYYY-MM-DD">
+					<input type="text" name="dateDepart" placeholder="YYYY-MM-DD">
 					</label><br/><br/>
 					
 					<label>Departing:
-					<input type="text" name="departTime" value="HH:MM:SS">
+					<input type="text" name="departTime" placeholder="HH:MM:SS">
 					</label><br/><br/>
 					
 					<label>Arrival Date:
-					<input type="text" name="dateArrive" value="YYYY-MM-DD">
+					<input type="text" name="dateArrive" placeholder="YYYY-MM-DD">
 					</label><br/><br/>
 					
 					<label>Arriving:
-					<input type="text" name="arriveTime" value="HH:MM:SS">
+					<input type="text" name="arriveTime" placeholder="HH:MM:SS">
 					</label><br/><br/>
 					
 					<label>Interconnect ID (if any):

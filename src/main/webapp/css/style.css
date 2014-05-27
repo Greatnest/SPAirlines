@@ -474,34 +474,30 @@ input, textarea {
 
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:#707070;
-	font-size: 1em;
-	font-style: italic;
-	text-align:center;
-	font-family: "Simple kind of girl", sans-serif;
+	font-size: 0.9em;
+	text-align:left;
+	font-family: "Times New Roman", serif;
 }
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color:#707070;
-	font-size: 1em;
-	font-style: italic;
-	text-align:center;
-	font-family: "Simple kind of girl", sans-serif;
+	font-size: 0.9em;
+	text-align:left;
+	font-family: "Times New Roman", serif;
 }
 
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color:#707070;
-	font-size: 1em;
-	font-style: italic;
-	text-align:center;
-	font-family: "Simple kind of girl", sans-serif;
+	font-size: 0.9em;
+	text-align:left;
+	font-family: "Times New Roman", serif;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color:#707070;
-	font-size: 1em;
-	font-style: italic;
-	text-align:center;
-	font-family: "Simple kind of girl", sans-serif;
+	font-size: 0.9em;
+	text-align:left;
+	font-family: "Times New Roman", serif;
 }
   
 
