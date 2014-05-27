@@ -64,10 +64,7 @@
     Connection conn=DriverManager.getConnection(connURL);
 
 String ID=request.getParameter("ID");
-}catch(Exception e) 
-{
-out.println("Please contact the administrator");	
-}
+
 %>
 			<h2>Type in your new password here:</h2>
 			<form action="resetPassword.jsp" method="post">
@@ -80,8 +77,11 @@ out.println("Please contact the administrator");
 			</div>
 	</div>
 
-
-
+<%}catch(Exception e) 
+{
+out.println("Please contact the administrator");	
+}
+%>
 
 <%@include file="footer.jsp"%>
 </body>
