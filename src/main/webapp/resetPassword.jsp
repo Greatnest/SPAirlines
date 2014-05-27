@@ -49,6 +49,7 @@
 				</label><br/><br/>
 				
 				<input type="submit" class="submit" value="Login"/>
+				<a href="forgetPassword.jsp"/>Forgot your password?</a>
 			</form>	
 			</div>
 			
@@ -65,14 +66,32 @@
 	
 	String ID=request.getParameter("ID");
 	String password=request.getParameter("password");
+	String generatedPassword = null;
+	  try {
+      
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] bytes = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i< bytes.length ;i++)
+        {
+            sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        }
+ 
+        generatedPassword = sb.toString();
+    }
+    catch (NoSuchAlgorithmException e) {
+		out.println("An error has occured, please try again");
+}
+	
 	String sqlStr="UPDATE admin set Password=? where ID=?";
 	PreparedStatement pstmt=conn.prepareStatement(sqlStr);
-	pstmt.setString(1,password);
+	pstmt.setString(1,generatedPassword);
 	pstmt.setString(2,ID);
 	int rec=pstmt.executeUpdate();
 	if(rec==1)
 	{
-		out.println("Your password has been reseted");
+		out.println("Your password has been reseted, please login with your new password");
 	}
 	else {
 		out.println("An error has occured, please try again");
@@ -83,5 +102,12 @@
 out.println("Please contact the administrator");	
 }
 %>			
-		
-<%@include file="footer.jsp"%>
+<footer>
+		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>
+		</footer>
+
+	</div>
+
+
+</body>
+</html>

@@ -48,6 +48,7 @@
 					</label><br /> <label>Password: <input type="password"
 						class="inputLogin" name="password" />
 					</label><br /> <input type="submit" class="submitLong" value="Login" />
+					<a href="forgetPassword.jsp"/>Forgot your password?</a>
 				</form>
 
 			</div>

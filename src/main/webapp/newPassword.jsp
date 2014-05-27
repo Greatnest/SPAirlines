@@ -49,6 +49,7 @@
 				</label><br/><br/>
 				
 				<input type="submit" class="submit" value="Login"/>
+				<a href="forgetPassword.jsp"/>Forgot your password?</a>
 			</form>	
 			</div>
 			
@@ -83,6 +84,6 @@ out.println("Please contact the administrator");
 }
 %>
 
-<%@include file="footer.jsp"%>
+
 </body>
 </html>
