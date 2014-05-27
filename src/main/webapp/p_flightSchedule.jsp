@@ -86,7 +86,7 @@
 			 		String origin=rs.getString("originAirport");
 					String originCountry=rs.getString("originCountry");
 %>				        
-						<option value="<%=origin %>"><%=origin %>,<%=originCountry%></option>
+						<option value="<%=origin %>"><%=origin %>, <%=originCountry%></option>
 <% } %>
 			        </select>
 					</label><br/><br/>
@@ -99,7 +99,7 @@
 			 		String destination=rs2.getString("destinationAirport");
 					String country = rs2.getString("country");
 %>				        
-						<option value="<%=destination %>"><%=destination %>,<%=country%></option>
+						<option value="<%=destination %>"><%=destination %>, <%=country%></option>
 <% } %>
 			        </select>
 			        </label><br/><br/>
