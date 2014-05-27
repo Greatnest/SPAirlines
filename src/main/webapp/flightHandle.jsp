@@ -197,7 +197,7 @@ if (request.getParameter("edit") != null) {
 
 	}catch(Exception e){
 		
-	out.println(e);
+		out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.")
 	}
 	}else {
 
@@ -225,7 +225,7 @@ if (request.getParameter("delete") != null) {
 	int count = 0;
 		for(int i=0; i<del.length;i++){
 			
-			String sqlStr="Delete FROM flightSchedule where flightScheduleID =?";  
+			String sqlStr="Delete FROM flightschedule where flightScheduleID =?";  
 			PreparedStatement pstmt = conn.prepareStatement(sqlStr);	
 			pstmt.setInt(1, delete[i]);	
 			count = pstmt.executeUpdate();
@@ -240,7 +240,7 @@ if (request.getParameter("delete") != null) {
 		conn.close();
 	
 }catch(Exception e){
-out.println(e);
+	out.println("An error has occured, please try again or contact the administrator at admin@spairlines.com. We apologize for the inconvenience.")
 }
 }else {
 out.println("Please select a flight to delete");
