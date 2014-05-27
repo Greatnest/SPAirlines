@@ -49,7 +49,7 @@
 				<input type="password" name="password"/>
 				</label><br/><br/>
 				
-				<input type="submit" class="submit" value="Login"/>
+				<input type="submit" class="submitLong" value="Login"/>
 				<a href="forgetPassword.jsp"/>Forgot your password?</a>
 			</form>	
 			</div>
@@ -103,6 +103,9 @@
 out.println("Please contact the administrator");	
 }
 %>			
+</div>
+</div>
+
 <footer>
 		<p id="credits">&copy; 2014 SP Airlines. All Rights Reserved.</p>
 		</footer>
