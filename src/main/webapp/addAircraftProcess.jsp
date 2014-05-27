@@ -88,25 +88,25 @@
     Connection conn=DriverManager.getConnection(connURL);
 			
 	String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity, imagepath) Values(?,?,?,?,?)";
+	PreparedStatement pstmt=conn.prepareStatement(sqlStr);
+	int rec;
 		if (image.equals("")) {
-				
-			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 			pstmt.setInt(1,craftID);
 			pstmt.setInt(2,flightNo);
 			pstmt.setString(3,model);
 			pstmt.setInt(4, capacity);
 			pstmt.setString(5, "planes/default.jpg");
 			
-			int rec=pstmt.executeUpdate();
+			rec=pstmt.executeUpdate();
 		} else {
 		pstmt.setInt(1,craftID);
 			pstmt.setInt(2,flightNo);
 			pstmt.setString(3,model);
 			pstmt.setInt(4, capacity);
 			pstmt.setString(5,image);
+			rec=pstmt.executeUpdate();
+		}
 		
-		}
-		}
 			if (rec==1){
 				%> <p class="para">
 				New Aircraft details has been added into the database and can be viewed under Aircraft Information.
