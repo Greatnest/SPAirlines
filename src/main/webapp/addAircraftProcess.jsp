@@ -97,7 +97,7 @@
 			pstmt.setInt(4, capacity);
 			pstmt.setString(5, "planes/default.jpg");
 			
-			rec=pstmt.executeUpdate();
+				rec=pstmt.executeUpdate();
 		} else {
 		pstmt.setInt(1,craftID);
 			pstmt.setInt(2,flightNo);

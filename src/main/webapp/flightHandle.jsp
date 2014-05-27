@@ -215,7 +215,6 @@ if (request.getParameter("delete") != null) {
     	delete[x] = Integer.parseInt(del[x]); 
 	}
 
-try {
   try {
 	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
