@@ -205,7 +205,7 @@ out.println("Please select a flight to update");
 }
 if (request.getParameter("delete") != null) {
 	
-	String[] del = request.getParameterValues("delete");
+	String[] del = request.getParameterValues("del");
 	int[] delete = new int[del.length];
 	for(int x=0;x< del.length;x++) { 
     	delete[x] = Integer.parseInt(del[x]); 
