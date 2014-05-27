@@ -86,6 +86,7 @@ if (request.getParameter("edit") != null) {
 	
 	    String sqlStr="Select * from aircraft where aircraftID = ?";
 			
+			
 		PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 		pstmt.setInt(1,aircraftID);
 		

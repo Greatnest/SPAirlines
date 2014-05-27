@@ -88,7 +88,7 @@
     Connection conn=DriverManager.getConnection(connURL);
 			
 	String sqlStr="Insert into aircraft(aircraftID, flightNo, model, capacity, imagepath) Values(?,?,?,?,?)";
-		if (image eq "") {
+		if (image.equals("")) {
 				
 			PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 			pstmt.setInt(1,craftID);
