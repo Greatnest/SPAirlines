@@ -71,11 +71,10 @@ try {
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
     Connection conn=DriverManager.getConnection(connURL);
-   
 	    
     String email=request.getParameter("email");
     
-  String sqlStr="SELECT ID FROM admin WHERE email=?";
+  String sqlStr="SELECT ID FROM admin WHERE Email=?";
    PreparedStatement pstmt=conn.prepareStatement(sqlStr);
    pstmt.setString(1,email);
 	ResultSet rs=pstmt.executeQuery();
@@ -102,8 +101,8 @@ try {
    	resetlink.append(userID);
    	String linkreset=resetlink.toString();
    	
-	   final String username = "spairlinesreset@gmail.com";
-	   final String password = "p@ssw0rdr3s3t";
+	   final String username = "ngquiet@gmail.com";
+	   final String password = "areyoumad12";
 	   Properties props = new Properties();
 	   props.put("mail.smtp.auth", "true");
 	   props.put("mail.smtp.starttls.enable", "true");

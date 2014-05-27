@@ -64,18 +64,18 @@
 	</div>
 <%
 try {
- String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
 	String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String dbusername = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String dbpassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 	
     Class.forName("com.mysql.jdbc.Driver");
     String connURL="jdbc:mysql://" + host + ":" + port + "/spairlines?" + "user=" + dbusername + "&password=" + dbpassword;
-    Connection conn=DriverManager.getConnection(connURL);	
+    Connection conn=DriverManager.getConnection(connURL);
 
 String ID=request.getParameter("ID");
 String password=request.getParameter("password");
-String sqlStr="UPDATE admin set Password=? where ID like ?";
+String sqlStr="UPDATE admin set Password like ? where ID like ?";
 PreparedStatement pstmt=conn.prepareStatement(sqlStr);
 pstmt.setString(1,password);
 pstmt.setString(2,ID);
