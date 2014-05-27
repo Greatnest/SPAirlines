@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title><title>SP Airlines</title>
+<title>SP Airlines</title>
    <style type="text/css">
     <%@include file="css/style.css" %></style>
 	<link rel="shortcut icon" href="icons/favicon.ico"/>
@@ -201,18 +201,11 @@ if (request.getParameter("edit") != null) {
 	}
 	}else {
 
-out.println("Please select a flight to delete");
+out.println("Please select a flight to update");
 }
-
-
-
-
-
 if (request.getParameter("delete") != null) {
 	
-
-
-	String[] del = request.getParameterValues("del");
+	String[] del = request.getParameterValues("delete");
 	int[] delete = new int[del.length];
 	for(int x=0;x< del.length;x++) { 
     	delete[x] = Integer.parseInt(del[x]); 
